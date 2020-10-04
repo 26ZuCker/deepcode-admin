@@ -49,10 +49,6 @@ export default {
     ...mapState({
       routerItems: (state) => state.showCom.routerItems,
     }),
-    ...mapGetters({
-      isLogin: 'user/isLogin',
-      isLgScreen: 'showCom/isLgScreen',
-    })
   },
 }
 </script>

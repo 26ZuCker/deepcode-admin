@@ -35,7 +35,6 @@ export default {
     }
   },
   created () {
-    throw new Error('404 Not Found')
     const timer = setInterval(() => {
       (this.leftTime > 0) && (this.leftTime -= 1000) || (this.$router.push('/'))
     }, this.leftTime / 1000)

@@ -18,7 +18,7 @@
       <v-spacer></v-spacer>
 
       <!-- pc端采用表单拓展框的形式选择 -->
-      <v-menu :rounded="rounded" offset-y>
+      <v-menu rounded offset-y max-height="300">
         <template v-slot:activator="{ attrs, on }">
           <v-btn
             tile
@@ -32,7 +32,7 @@
           </v-btn>
         </template>
 
-        <v-list>
+        <v-list v-if="isLgScreen($vuetify)">
           <v-list-item v-for="item in weekNum" :key="item" link>
             <v-list-item-title v-text="item"></v-list-item-title>
           </v-list-item>
@@ -47,6 +47,7 @@
       temporary
       fixed
       height="230"
+      v-if="!isLgScreen($vuetify)"
     >
       <v-list nav dense>
         <v-list-item-group
@@ -65,6 +66,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { formatYMDHM } from '@/utils/dayjs'
 
 export default {
@@ -92,6 +94,9 @@ export default {
     weekNum () {
       return Array.from({ length: 23 }, (v, k) => k + 1);
     },
+    ...mapGetters({
+      isLgScreen: 'showCom/isLgScreen'
+    })
   },
   watch: {},
   //假如放在mounted内则会出现只显示边框而没有数据占位的情况
