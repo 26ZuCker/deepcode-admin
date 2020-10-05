@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <user-card></user-card>
   </v-container>
 </template>
@@ -7,13 +7,10 @@
 <script>
 export default {
   inheritAttrs: false,
-  name: 'userId',
+  name: 'user-userId',
   components: {
-    UserCard: () => import('@/components/user/UserCard.vue'),
-    OffsetCard: () => import('@/components/user/OffsetCard.vue')
+    UserCard: () => import('@/components/user/UserCard.vue')
   },
-  data: () => ({
-  }),
 }
 </script>
 

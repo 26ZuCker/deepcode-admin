@@ -38,9 +38,9 @@
     <!-- 主体建议先不包裹 -->
     <nuxt />
     <!-- 底部浮动按钮 -->
-
+    <float-btn></float-btn>
     <!-- 底部栏 -->
-    <v-footer absolute app>
+    <v-footer absolute app class="pa-1">
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>

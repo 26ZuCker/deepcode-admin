@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-stepper v-model="e1" non-linear>
+    <v-stepper v-model="e1" non-linear alt-labels>
       <v-stepper-header class="overflow-x-auto">
         <template v-for="n in steps">
           <v-stepper-step
@@ -19,6 +19,7 @@
       <!-- 当前大部分的负责人的完成程度 -->
       <v-stepper-items>
         <v-stepper-content v-for="n in steps" :key="`${n}-content`" :step="n">
+          <slot></slot>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
@@ -34,7 +35,9 @@ export default {
       es6: 1
     }
   },
-
+  components: {
+    MiSteCard: () => import('./MiSteCard.vue')
+  },
   watch: {
     steps (val) {
       if (this.e1 > val) {

@@ -22,6 +22,10 @@
       <v-avatar v-if="isLogin">
         <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
       </v-avatar>
+      <!-- 大屏，伸张，未登录 -->
+      <v-btn icon v-if="isShowFullTopBar && !isLogin && isLgScreen($vuetify)">
+        <v-icon>mdi-arrow-expand-left</v-icon>
+      </v-btn>
     </v-app-bar-nav-icon>
 
     <!-- <v-btn icon>
@@ -52,8 +56,12 @@
         <v-icon>mdi-message-outline</v-icon>
       </v-btn>
     </v-badge>
-    <!-- 伸展 -->
-    <v-btn icon @click="set_isShowFullTopBar" v-if="isShowFullTopBar">
+    <!-- 伸展，小屏 -->
+    <v-btn
+      icon
+      @click="set_isShowFullTopBar"
+      v-if="isShowFullTopBar && !isLgScreen($vuetify)"
+    >
       <v-icon>mdi-arrow-expand-left</v-icon>
     </v-btn>
     <!-- 登录 -->
@@ -101,16 +109,21 @@ export default {
   methods: {
     //点击顶部栏最左侧按钮
     showBar () {
-      //第一次先展开
-      if (!this.isShowFullTopBar) {
-        if (this.isLgScreen) {
-          this.set_isShowFullTopBar()
+      if (this.isShowFullTopBar && !this.isLogin && this.isLgScreen(this.$vuetify)) {
+        this.set_isShowFullTopBar()
+      } else {
+        //第一次先展开
+        if (!this.isShowFullTopBar) {
+          if (this.isLgScreen) {
+            this.set_isShowFullTopBar()
+          }
+        }
+        //展开后再点且在移动端才展示左侧边栏，注意由于左侧边栏覆盖顶部栏所以该按钮只需要调整为true即可
+        else {
+          this.$emit('onShowLeftBar')
         }
       }
-      //展开后再点且在移动端才展示左侧边栏，注意由于左侧边栏覆盖顶部栏所以该按钮只需要调整为true即可
-      else {
-        this.$emit('onShowLeftBar')
-      }
+
     },
     //无法直接在html内使用$router.back且注意不能直接返回error页面
     routerBack () {

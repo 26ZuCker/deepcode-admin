@@ -5,7 +5,9 @@
       <mi-header></mi-header>
 
       <!-- 当前任务其他负责人的自定义模块进度 -->
-      <mi-stepper></mi-stepper>
+      <mi-stepper>
+        <mi-ste-card></mi-ste-card>
+      </mi-stepper>
 
       <!-- 当前任务当前负责人即登录用户自定义模块进度 -->
       <mi-timeline :items="items"></mi-timeline>
@@ -20,7 +22,8 @@ export default {
   components: {
     MiStepper: () => import('@/components/mission/MiStepper'),
     MiTimeline: () => import('@/components/mission/MiTimeline'),
-    MiHeader: () => import('@/components/mission/MiHeader')
+    MiHeader: () => import('@/components/mission/MiHeader'),
+    MiSteCard: () => import('@/components/mission/MiSteCard'),
   },
   data: () => ({
     items: [
