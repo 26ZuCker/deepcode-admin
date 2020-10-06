@@ -3,7 +3,7 @@
 一旦左侧边栏显示则盖过顶部栏
 注意必须改为fixed而非absolute因为只需要占满可视区的完整高度即可，后者则高度自定与整个html文档即页面的高度挂钩
 -->
-<template >
+<template>
   <div>
     <v-img
       src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"

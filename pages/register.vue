@@ -3,15 +3,17 @@
   <v-container fluid>
     <v-card ref="form">
       <v-card-text>
+        <!-- 姓名 -->
         <v-text-field
           ref="name"
           v-model="name"
           :rules="[() => !!name || 'This field is required']"
           :error-messages="errorMessages"
-          label="Full Name"
+          label="姓名"
           placeholder="John Doe"
           required
         ></v-text-field>
+        <!-- 账号 -->
         <v-text-field
           ref="address"
           v-model="address"
@@ -27,6 +29,7 @@
           counter="25"
           required
         ></v-text-field>
+        <!-- 密码 -->
         <v-text-field
           ref="city"
           v-model="city"
@@ -35,22 +38,25 @@
           placeholder="El Paso"
           required
         ></v-text-field>
+        <!-- 职务 -->
         <v-text-field
           ref="state"
           v-model="state"
           :rules="[() => !!state || 'This field is required']"
-          label="State/Province/Region"
+          label="职务"
           required
           placeholder="TX"
         ></v-text-field>
+        <!-- 校验教务系统账密 -->
         <v-text-field
-          ref="zip"
-          v-model="zip"
-          :rules="[() => !!zip || 'This field is required']"
-          label="ZIP / Postal Code"
+          ref="state"
+          v-model="state"
+          :rules="[() => !!state || 'This field is required']"
+          label="校验教务系统"
           required
-          placeholder="79938"
+          placeholder="TX"
         ></v-text-field>
+        <!-- 是否开发组或算法组，并校验LeetCode系统账密 -->
         <v-autocomplete
           ref="country"
           v-model="country"
@@ -61,10 +67,20 @@
           required
         ></v-autocomplete>
       </v-card-text>
+
       <v-divider class="mt-12"></v-divider>
+      <!-- 点击进入详情 -->
       <v-card-actions>
-        <v-btn text>Cancel</v-btn>
+        <v-switch
+          v-model="autoUpdate"
+          class="mt-0"
+          color="primary"
+          hide-details
+          label="我已了解工作室规章制度"
+        ></v-switch>
+
         <v-spacer></v-spacer>
+
         <v-slide-x-reverse-transition>
           <v-tooltip v-if="formHasErrors" left>
             <template v-slot:activator="{ on, attrs }">
@@ -81,7 +97,8 @@
             <span>Refresh form</span>
           </v-tooltip>
         </v-slide-x-reverse-transition>
-        <v-btn color="primary" text @click="submit">Submit</v-btn>
+        <v-btn text>取消</v-btn>
+        <v-btn color="primary" text @click="submit">提交</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -115,35 +132,27 @@ export default {
       }
     },
   },
-
   watch: {
     name () {
       this.errorMessages = ''
     },
   },
-
   methods: {
     addressCheck () {
-      this.errorMessages = this.address && !this.name
-        ? 'Hey! I\'m required'
-        : ''
-
+      this.errorMessages = this.address && !this.name ? 'Hey! I\'m required' : ''
       return true
     },
     resetForm () {
       this.errorMessages = []
       this.formHasErrors = false
-
       Object.keys(this.form).forEach(f => {
         this.$refs[f].reset()
       })
     },
     submit () {
       this.formHasErrors = false
-
       Object.keys(this.form).forEach(f => {
         if (!this.form[f]) this.formHasErrors = true
-
         this.$refs[f].validate(true)
       })
     },

@@ -2,7 +2,7 @@
 日程安排
 -->
 <template>
-  <v-container fluid>
+  <v-container>
     <!-- 日历顶部用户交互栏：调整周次，显示课程，日程，打卡始末时间 -->
     <cal-header></cal-header>
     <!-- 日历主体 -->

@@ -34,6 +34,7 @@ export const state = () => ({
   isShowLeftBar: false,
   isShowFullTopBar: false,
   routerItems,
+  isShowNoticeBar: false,
 })
 export const mutations = {
   set_isShowLeftBar: (state) => {
@@ -43,6 +44,10 @@ export const mutations = {
   set_isShowFullTopBar: (state) => {
     state.isShowFullTopBar =
       state.isShowFullTopBar === undefined ? false : !state.isShowFullTopBar
+  },
+  //考虑是否需要消除组件内部的计时器
+  set_isShowNoticeBar: (state) => {
+    state.isShowNoticeBar = true
   },
 }
 //相当于computed同样可以二次传参即传自定义参数

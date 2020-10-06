@@ -1,17 +1,31 @@
 <template>
-  <v-app dark>
+  <v-app>
     <!-- 顶部栏 -->
     <top-bar @onShowLeftBar="showLeftBar"></top-bar>
+
     <!-- 占位右侧显示实时时间 -->
     <v-sheet
-      class="overflow-y-auto default-layout-topbar-time"
-      max-height="200"
+      class="default-layout-topbar-time blue-grey lighten-2"
       v-if="$route.name !== 'user-userId'"
     >
       <v-container style="height: 48px" class="text-right">
         {{ currentTime }}
       </v-container>
     </v-sheet>
+
+    <v-sheet
+      height="100%"
+      class="flex fill-height align-center blue-grey darken-1"
+    >
+      <!-- 主体 -->
+      <nuxt />
+    </v-sheet>
+
+    <!-- 页尾 -->
+    <v-footer app class="ma-auto blue-grey darken-1">
+      <span>&copy; {{ new Date().getFullYear() }}</span>
+    </v-footer>
+
     <!-- 左侧边栏 -->
     <v-navigation-drawer
       dark
@@ -22,6 +36,7 @@
       v-model="drawer"
       app
       v-if="!isLgScreen($vuetify)"
+      width="150"
     >
       <left-bar></left-bar>
       <template v-slot:append>
@@ -33,16 +48,14 @@
             >{{ isLogin ? '退出' : '登录' }}</v-btn
           >
         </div>
-      </template>
+      </template></v-navigation-drawer
+    ></v-app
+  >
+</template>
     </v-navigation-drawer>
-    <!-- 主体建议先不包裹 -->
-    <nuxt />
+
     <!-- 底部浮动按钮 -->
     <float-btn></float-btn>
-    <!-- 底部栏 -->
-    <v-footer absolute app class="pa-1">
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
   </v-app>
 </template>
 

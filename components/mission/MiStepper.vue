@@ -16,7 +16,7 @@
         </template>
       </v-stepper-header>
 
-      <!-- 当前大部分的负责人的完成程度 -->
+      <!-- 当前大部分的负责人的完成程度，插槽放置具体内容 -->
       <v-stepper-items>
         <v-stepper-content v-for="n in steps" :key="`${n}-content`" :step="n">
           <slot></slot>

@@ -60,38 +60,6 @@
         <v-col class="text-right" cols="5">15:25 EDT</v-col>
       </v-row>
     </v-timeline-item>
-
-    <v-timeline-item class="mb-4" color="grey" small>
-      <v-row justify="space-between">
-        <v-col cols="7">
-          Order confirmation email was sent to John Leider (john@vuetifyjs.com).
-        </v-col>
-        <v-col class="text-right" cols="5">15:25 EDT</v-col>
-      </v-row>
-    </v-timeline-item>
-
-    <v-timeline-item class="mb-4" hide-dot>
-      <v-btn class="mx-0" color="white"> Resend Email </v-btn>
-    </v-timeline-item>
-
-    <v-timeline-item class="mb-4" color="grey" small>
-      <v-row justify="space-between">
-        <v-col cols="7">
-          A $15.00 USD payment was processed on PayPal Express Checkout
-        </v-col>
-        <v-col class="text-right" cols="5">15:25 EDT</v-col>
-      </v-row>
-    </v-timeline-item>
-
-    <v-timeline-item color="grey" small>
-      <v-row justify="space-between">
-        <v-col cols="7">
-          John Leider placed this order on Online Store (checkout
-          #1937432132572).
-        </v-col>
-        <v-col class="text-right" cols="5">15:25 EDT</v-col>
-      </v-row>
-    </v-timeline-item>
   </v-timeline>
 </template>
 
