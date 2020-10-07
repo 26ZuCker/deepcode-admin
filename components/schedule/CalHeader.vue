@@ -17,8 +17,8 @@
       </v-btn-toggle>
       <v-spacer></v-spacer>
 
-      <!-- pc端采用表单拓展框的形式选择 -->
-      <v-menu rounded offset-y max-height="300">
+      <!-- pc端采用表单拓展框的形式选择，两个按钮分别控制当前周次和选择看的用户 -->
+      <v-menu rounded="b-xl" offset-y max-height="300">
         <template v-slot:activator="{ attrs, on }">
           <v-btn
             tile
@@ -27,6 +27,28 @@
             class="ml-1"
             v-bind="attrs"
             v-on="on"
+            small
+          >
+            <v-icon left>mdi-calendar-week</v-icon> 第{{ currentWeek }}周
+          </v-btn>
+        </template>
+
+        <v-list v-if="isLgScreen($vuetify)">
+          <v-list-item v-for="item in weekNum" :key="item" link>
+            <v-list-item-title v-text="item"></v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <v-menu offset-y max-height="300" rounded="b-xl">
+        <template v-slot:activator="{ attrs, on }">
+          <v-btn
+            tile
+            outlined
+            @click="bottomDrawer = !bottomDrawer"
+            class="ml-1"
+            v-bind="attrs"
+            v-on="on"
+            small
           >
             <v-icon left>mdi-calendar-week</v-icon> 第{{ currentWeek }}周
           </v-btn>
@@ -60,8 +82,6 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-
-    <!-- pc端则为拓展菜单 -->
   </div>
 </template>
 

@@ -75,29 +75,31 @@
       <v-divider></v-divider>
 
       <v-card-actions class="flex justify-space-around">
-        <!-- <v-switch
-          v-model="autoUpdate"
-          :disabled="isUpdating"
-          class="mt-0"
-          color="green lighten-2"
-          hide-details
-          label="Auto Update"
-        ></v-switch> -->
-        <v-btn @click="$router.push('/register')">
-          <v-icon left>mdi-update</v-icon>
-          加入我们
-        </v-btn>
-
-        <v-btn
-          :disabled="autoUpdate"
-          :loading="isUpdating"
-          color="blue-grey darken-3"
-          depressed
-          @click="isUpdating = true"
-        >
-          <v-icon left>mdi-update</v-icon>
-          登录
-        </v-btn>
+        <v-row>
+          <v-col :cols="isLgScreen($vuetify) ? 2 : 12">
+            <v-btn @click="showRegister = !showRegister">
+              <v-icon left>mdi-update</v-icon>
+              加入我们
+            </v-btn>
+          </v-col>
+          <!-- 需要形成块级元素单独占据一行 -->
+          <v-col
+            :offset="isLgScreen($vuetify) ? 8 : 0"
+            :cols="isLgScreen($vuetify) ? 2 : 12"
+          >
+            <v-btn
+              :disabled="autoUpdate"
+              :loading="isUpdating"
+              color="blue-grey darken-3"
+              depressed
+              :block="!isLgScreen($vuetify)"
+              @click="isUpdating = true"
+            >
+              <v-icon left>mdi-update</v-icon>
+              登录
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -138,6 +140,7 @@ export default {
         { name: 'Sandra Williams', group: 'Group 2', avatar: srcs[3] },
       ],
       title: '欢迎你的加入',
+      showRegister: false
     }
   },
 

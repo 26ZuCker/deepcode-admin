@@ -5,6 +5,7 @@
     <v-container>
       <four-btn></four-btn>
     </v-container>
+    <bottom-btn></bottom-btn>
   </div>
 </template>
 

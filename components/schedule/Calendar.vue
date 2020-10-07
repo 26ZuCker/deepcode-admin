@@ -2,7 +2,7 @@
 把整个日历拆解为多个视图，与mode区分，如day视图即顶部表示日的一栏
 -->
 <template>
-  <v-sheet min-width="200">
+  <v-sheet min-width="200" class="mb-6">
     <v-calendar
       ref="calendar"
       v-model="focus"
@@ -177,7 +177,7 @@ export default {
   pointer-events: none;
 
   &.first::before {
-    content: "";
+    content: '';
     position: absolute;
     background-color: #ea4335;
     width: 12px;

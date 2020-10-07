@@ -15,14 +15,14 @@
 
     <v-sheet
       height="100%"
-      class="flex fill-height align-center blue-grey darken-1"
+      :class="$route.name === 'login' ? 'blue-grey darken-1' : ''"
     >
       <!-- 主体 -->
       <nuxt />
     </v-sheet>
 
     <!-- 页尾 -->
-    <v-footer app class="ma-auto blue-grey darken-1">
+    <v-footer absolute class="blue-grey darken-1" padless>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
 
@@ -48,16 +48,13 @@
             >{{ isLogin ? '退出' : '登录' }}</v-btn
           >
         </div>
-      </template></v-navigation-drawer
-    ></v-app
-  >
-</template>
+      </template>
     </v-navigation-drawer>
-
     <!-- 底部浮动按钮 -->
     <float-btn></float-btn>
   </v-app>
 </template>
+
 
 <script>
 import { formatYMDHM } from '@/utils/dayjs.js'
@@ -101,3 +98,8 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.aaa {
+  display: flex;
+}
+</style>
