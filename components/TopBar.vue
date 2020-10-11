@@ -33,7 +33,7 @@
     </v-btn>-->
 
     <!-- 根据是否是非首页进行回退按钮的选择 -->
-    <v-btn icon v-if="$route.name !== 'board'" @click="routerBack">
+    <v-btn icon v-if="$route.name !== 'user-userId'" @click="routerBack">
       <v-icon>mdi-arrow-left-thick</v-icon>
     </v-btn>
     <v-toolbar-title>{{ currentRouteTitle($route.name) }}</v-toolbar-title>

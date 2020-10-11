@@ -134,7 +134,7 @@ export default {
   },
   watch: {
     name () {
-      this.errorMessages = ''
+      this.errorMessages = '';
     },
   },
   methods: {

@@ -4,10 +4,7 @@
     <top-bar @onShowLeftBar="showLeftBar"></top-bar>
 
     <!-- 占位右侧显示实时时间 -->
-    <v-sheet
-      class="default-layout-topbar-time blue-grey lighten-2"
-      v-if="$route.name !== 'user-userId'"
-    >
+    <v-sheet class="default-layout-topbar-time blue-grey lighten-2">
       <v-container style="height: 48px" class="text-right">
         {{ currentTime }}
       </v-container>
@@ -15,10 +12,18 @@
 
     <v-sheet
       height="100%"
-      :class="$route.name === 'login' ? 'blue-grey darken-1' : ''"
+      :class="darkBackGround($route.name) ? 'blue-grey darken-1' : ''"
     >
       <!-- 主体 -->
       <nuxt />
+    </v-sheet>
+
+    <!-- 页尾占位 -->
+    <v-sheet
+      class="default-layout-topbar-time white"
+      elevation="0"
+      style="height: 20px"
+    >
     </v-sheet>
 
     <!-- 页尾 -->
@@ -80,7 +85,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isLogin: 'user/isLogin', isLgScreen: 'showCom/isLgScreen',
+      isLogin: 'user/isLogin', isLgScreen: 'showCom/isLgScreen', darkBackGround: 'showCom/darkBackGround'
     })
   },
   mounted () {

@@ -1,5 +1,12 @@
 <template>
-  <v-carousel class="elevation-1" cycle show-arrows-on-hover>
+  <v-carousel
+    class="elevation-1"
+    cycle
+    show-arrows-on-hover
+    vertical
+    hide-delimiter-background
+    vertical-delimiters="mdi-circle"
+  >
     <v-carousel-item
       v-for="(item, i) in items"
       :key="i"
@@ -11,7 +18,7 @@
 <script>
 export default {
   inheritAttrs: false,
-  name: 'IndexAlbum',
+  name: 'OffAlbum',
   components: {},
   data: () => ({
 

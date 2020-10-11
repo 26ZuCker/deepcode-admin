@@ -7,8 +7,6 @@
     <bulletin-board></bulletin-board>
     <!-- 排行榜 -->
     <rank-table :headersData="headersData" :rankData="rankData"></rank-table>
-    <!-- 相册 -->
-    <index-album :items="items"></index-album>
   </v-container>
 </template>
 
@@ -22,7 +20,6 @@ export default {
     RankTable: () => import('@/components/board/RankTable.vue'),
     TestTable: () => import('@/components/board/TestTable.vue'),
     Notice: () => import('@/components/common/Notice.vue'),
-    IndexAlbum: () => import('@/components/board/IndexAlbum.vue'),
     TimeCircle: () => import('@/components/board/TimeCircle.vue'),
     BulletinBoard: () => import('@/components/board/BulletinBoard.vue'),
     TopCard: () => import('@/components/board/TopCard.vue'),
@@ -31,14 +28,9 @@ export default {
   data: () => ({
     knowledge: 25,
     headersData: [],
-    value: 60,
+
     rankData: [],
-    items: [
-      { src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg', },
-      { src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg', },
-      { src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg', },
-      { src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg', },
-    ],
+    value: 60,
   }),
   props: {},
   methods: {},

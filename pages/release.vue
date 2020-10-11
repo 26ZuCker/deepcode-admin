@@ -1,7 +1,7 @@
 <template>
   <!-- 从mission页面进入的发布任务页面 -->
   <v-container class="align-center">
-    <v-card color="blue-grey darken-1 elevation-14" class="rounded-xl">
+    <v-card color="blue-grey darken-1" elevation="14" class="rounded-xl">
       <v-toolbar flat color="blue-grey" dark>
         <v-toolbar-title>为你的小组成员发布任务</v-toolbar-title>
       </v-toolbar>
@@ -63,12 +63,26 @@
 
       <v-divider></v-divider>
 
-      <v-card-actions class="release-bottom-btn">
-        <v-btn icon>
-          <v-icon size="35">mdi-plus-circle-outline</v-icon>
+      <v-card-actions :class="releaseBottomBtnContainer">
+        <v-btn
+          @click="addPart"
+          fab
+          small
+          elevation="0"
+          class="my-2"
+          color="blue-grey darken-3"
+        >
+          <v-icon dark size="35"> mdi-plus </v-icon>
         </v-btn>
-
-        <v-btn class="mr-4" color="success" @click="release"> 发布 </v-btn>
+        <v-btn
+          color="blue-grey darken-3"
+          class="ml-0 my-2"
+          depressed
+          :block="!isLgScreen($vuetify)"
+          @click="release"
+        >
+          发布
+        </v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -112,8 +126,21 @@ export default {
       const index = this.friends.indexOf(item.name)
       if (index >= 0) this.friends.splice(index, 1)
     },
+    addPart () { }
   },
   computed: {
+    releaseBottomBtnContainer () {
+      return {
+        space: this.isLgScreen(this.$vuetify),
+        normal: !this.isLgScreen(this.$vuetify),
+      }
+    },
+    addPartBtn () {
+      return {
+        'pa-0': !this.isLgScreen(this.$vuetify),
+        'add--part-btn-container': !this.isLgScreen(this.$vuetify)
+      }
+    },
     ...mapGetters({
       isLgScreen: 'showCom/isLgScreen'
     })
@@ -129,5 +156,19 @@ export default {
 .release-bottom-btn {
   display: flex;
   justify-content: space-between;
+}
+.add--part-btn-container {
+  display: flex;
+  justify-content: center;
+}
+.space {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.normal {
+  display: flex;
+  flex-direction: column;
 }
 </style>
