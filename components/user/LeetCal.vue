@@ -1,5 +1,5 @@
 <!-- 
-  后期改为函数式组件
+  无法改为函数式组件因为无法调用item
   设置mobile-breakpoint为0且容器最小宽度保证一直完整显示
   需要通过编辑行来增加适当的icon以表示上周垫底和榜一，较昨天排名变化 
   暂时去除底部分页栏footer
@@ -8,7 +8,7 @@
   插槽由上至下摆放顺序：top顶部标题 -> header类别栏 -> body.prepend类别栏下标题
 -->
 <template>
-  <v-card light elevation="0" width="100%">
+  <v-card light elevation="0" width="100%" class="ma-3">
     <!-- 第一行为类别栏 -->
     <v-card-title class="rank-table-title">
       <span>LeetCode榜单</span>
@@ -59,15 +59,15 @@
 
 <script>
 import { achievementBadgeMap } from '@/apis/user.js';
-
+import { headersData, rankData } from '@/apis/rank.js'
+import registerVue from '../../pages/register.vue';
 export default {
   inheritAttrs: false,
   name: 'LeetCal',
-  data: () => ({}),
-  props: {
-    headersData: { type: Array, default: [] },
-    rankData: { type: Array, default: [] },
-  },
+  data: () => ({
+    headersData: [],
+    rankData: []
+  }),
   computed: {
     isShowRankData () {
       return function (key) {
@@ -79,7 +79,12 @@ export default {
         return achievement.length && (achievementBadgeMap[achievement[0]])
       }
     }
+  },
+  created () {
+    this.headersData = Object.freeze(headersData)
+    this.rankData = Object.freeze(rankData)
   }
+
 }
 </script>
 

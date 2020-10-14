@@ -19,14 +19,18 @@
       </v-avatar>
       <!-- 用户个人基本信息栏 -->
       <v-sheet height="100%" elevation="0" class="ml-5">
-        <v-card-title>
+        <v-card-title class="justify-center">
           小岚
           <v-icon color="pink" class="ma-3">mdi-gender-female</v-icon>
           <span class="green--text ma-3">在线</span>
         </v-card-title>
         <v-card-subtitle>
-          <span class="border-w pr-3">加入888天</span>
-          <span class="pl-3">打卡999时</span>
+          <span class="border-w pr-3"
+            >加入
+            <template class="">888</template>
+            天</span
+          >
+          <span class="pl-3">打卡 <template>999</template> 时</span>
         </v-card-subtitle>
       </v-sheet>
       <v-spacer></v-spacer>
@@ -39,15 +43,15 @@
       <v-progress-circular
         size="120"
         color="primary"
-        class="ml-13"
+        class="ml-10 mr-3"
         v-if="isLgScreen($vuetify)"
         >已完成项目数</v-progress-circular
       >
     </div>
     <!-- 今日打卡时长和项目剩余进度环 -->
     <div v-if="!isLgScreen($vuetify)" class="d-flex justify-space-around">
-      <v-progress-circular size="120" color="primary"
-        >今日打卡30h</v-progress-circular
+      <v-progress-circular size="120" color="primary">
+        今日打卡30h</v-progress-circular
       >
       <v-progress-circular size="120" color="primary"
         >已完成项目数</v-progress-circular
@@ -96,15 +100,6 @@ export default {
       isLgScreen: 'showCom/isLgScreen',
     })
   },
-  //后续在middleware内鉴权进入该route是否传递了userId否则重定向到login
-  async asyncData ({ isDev, route, store, env, params, query, req, res, redirect, error }) {
-    /* console.log(params)
-    console.log(query) */
-  },
-  created () {
-    /* console.log(this.$route.params)
-    console.log(this.$route.query) */
-  }
 }
 </script>
 
@@ -122,6 +117,7 @@ export default {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
 }
 .border-w {
   border-right: black solid 1px;

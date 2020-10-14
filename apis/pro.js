@@ -1,13 +1,18 @@
-import http, { decorRequest } from '@/plugins/axios/http.js'
+import http, { decorRequest } from '@/plugins/axios/http.js';
 
-const missionApiMap = {
+const proApiMap = {
   post_pro: { url: '', method: 'POST' },
   get_pro: { url: '', method: 'POST' },
   delete_pro: { url: '', method: 'POST' },
   delete_my_part: { url: '', method: 'POST' },
   change_pro: { url: '', method: 'POST' },
   change_my_part: { url: '', method: 'POST' },
-}
+};
+
+const proPart = {
+  partTitle: '',
+  partMember: [],
+};
 
 /**
  * 发布项目
@@ -27,7 +32,7 @@ const missionApiMap = {
   ],
 }
  */
-const post_pro = decorRequest(http, missionApiMap['post_pro'])
+const post_pro = decorRequest(http, proApiMap['post_pro']);
 /**
  * 获取单个项目，建议首屏只获取一个项目，然后默认获取该用户所有项目，再逐一后台请求
 {
@@ -59,21 +64,21 @@ const post_pro = decorRequest(http, missionApiMap['post_pro'])
   ],
 }
  */
-const get_pro = decorRequest(http, missionApiMap['get_pro'])
+const get_pro = decorRequest(http, proApiMap['get_pro']);
 /**
  * 删除单个项目
 {
   pro_id,
 }
  */
-const delete_pro = decorRequest(http, missionApiMap['delete_pro'])
+const delete_pro = decorRequest(http, proApiMap['delete_pro']);
 /**
  * 删除个人部分
 {
   my_part_id,
 }
  */
-const delete_my_part = decorRequest(http, missionApiMap['delete_my_part'])
+const delete_my_part = decorRequest(http, proApiMap['delete_my_part']);
 /**
  * 发布者修改整个项目，除pub_id外任发其一亦可
 {
@@ -92,7 +97,7 @@ const delete_my_part = decorRequest(http, missionApiMap['delete_my_part'])
   ],
 }
  */
-const change_pro = decorRequest(http, missionApiMap['change_pro'])
+const change_pro = decorRequest(http, proApiMap['change_pro']);
 /**
  * 修改个人部分，除my_part_id外任发其一即可
 {
@@ -102,7 +107,7 @@ const change_pro = decorRequest(http, missionApiMap['change_pro'])
   my_part_complete,
 }
  */
-const change_my_part = decorRequest(http, missionApiMap['change_my_part'])
+const change_my_part = decorRequest(http, proApiMap['change_my_part']);
 
 export {
   post_pro,
@@ -111,4 +116,5 @@ export {
   delete_my_part,
   change_pro,
   change_my_part,
-}
+  proPart,
+};

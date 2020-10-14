@@ -90,7 +90,7 @@ export default {
     isShowLoginBtn () {
       if (this.isLogin) {
         return false
-      } else if (this.$route.name !== 'board' && !this.isShowFullTopBar) {
+      } else if (this.$route.name !== 'user-userId' && !this.isShowFullTopBar) {
         return false
       } else {
         return true

@@ -4,6 +4,81 @@ import { get_userInfo, login, logout } from '@/apis/user.js';
 export const state = () => ({
   userInfo: {},
   token: '',
+  //此处只保存id，后续根据该id获取所属组
+  member: [
+    {
+      header: '开发组',
+    },
+    {
+      name: 'Sandra Adams',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+    },
+    {
+      name: 'Ali Connors',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
+    },
+    {
+      name: 'Trevor Hansen',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+    },
+    {
+      name: 'Tucker Smith',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
+    },
+    {
+      divider: true,
+    },
+
+    {
+      header: '算法组',
+    },
+    {
+      name: 'Britta Holt',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
+    },
+    {
+      name: 'Jane Smith ',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
+    },
+    {
+      name: 'John Smith',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+    },
+    {
+      name: 'Sandra Williams',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+    },
+    {
+      divider: true,
+    },
+
+    {
+      header: '第三组',
+    },
+    {
+      name: 'LeBron',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
+    },
+    {
+      name: 'James',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
+    },
+    {
+      divider: true,
+    },
+
+    {
+      header: '非工作室成员',
+    },
+    {
+      name: 'zeng',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+    },
+    {
+      name: 'Sandra',
+      avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+    },
+  ],
 });
 export const mutations = {
   //清除token和userInfo

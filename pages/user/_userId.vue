@@ -15,11 +15,7 @@
       ></pro-not-list>
 
       <!-- LeetCode刷题榜 -->
-      <leet-cal
-        v-if="currentTabs === 'LeetCal'"
-        :headersData="headersData"
-        :rankData="rankData"
-      ></leet-cal>
+      <leet-cal v-if="currentTabs === 'LeetCal'"></leet-cal>
 
       <!-- 项目列表 -->
       <pro-not-list
@@ -33,7 +29,6 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { headersData, rankData } from '@/apis/rank.js'
 
 export default {
   name: 'user-userId',
@@ -65,13 +60,9 @@ export default {
     /* console.log(this.$route.params)
     console.log(this.$route.query) */
 
-    this.headersData = Object.freeze(headersData)
-    this.rankData = Object.freeze(rankData)
-
   },
   methods: {
     changeTabs (tab) {
-      console.log(tab)
       this.currentTabs = tab
     }
   },

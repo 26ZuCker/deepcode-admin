@@ -26,7 +26,7 @@ const routerItems = [
   { id: 4, title: '工作室', icon: 'mdi-account-group-outline', url: '/office' },
 ];
 
-const darkBackGroundItems = ['login', 'release'];
+const darkBackGroundItems = ['login', 'release-releaseType'];
 
 //负责控制layout内组件的全局展示，保存一些全局组件状态如左侧边栏的显示
 export const state = () => ({
