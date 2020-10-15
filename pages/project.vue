@@ -1,16 +1,14 @@
 <template>
-  <v-container>
-    <!-- 单个用户可以切换多个任务 -->
-    <mi-header></mi-header>
+<v-container>
+  <!-- 单个用户可以切换多个任务 -->
+  <pro-header></pro-header>
 
-    <!-- 当前任务其他负责人的自定义模块进度 -->
-    <mi-stepper>
-      <mi-ste-card></mi-ste-card>
-    </mi-stepper>
+  <!-- 当前任务其他负责人的自定义模块进度 -->
+  <pro-slider> </pro-slider>
 
-    <!-- 当前任务当前负责人即登录用户自定义模块进度 -->
-    <mi-timeline :items="items"></mi-timeline>
-  </v-container>
+  <!-- 当前任务当前负责人即登录用户自定义模块进度 -->
+  <pro-timeline :items="items"></pro-timeline>
+</v-container>
 </template>
 
 <script>
@@ -18,14 +16,12 @@ export default {
   inheritAttrs: false,
   name: 'project',
   components: {
-    MiStepper: () => import('@/components/project/MiStepper'),
-    MiTimeline: () => import('@/components/project/MiTimeline'),
-    MiHeader: () => import('@/components/project/MiHeader'),
-    MiSteCard: () => import('@/components/project/MiSteCard'),
+    ProSlider: () => import('@/components/project/ProSlider'),
+    ProTimeline: () => import('@/components/project/ProTimeline'),
+    ProHeader: () => import('@/components/project/ProHeader'),
   },
   data: () => ({
-    items: [
-      {
+    items: [{
         color: 'red lighten-2',
         icon: 'mdi-star',
       },
@@ -45,10 +41,10 @@ export default {
   }),
   props: {},
   methods: {
-    prevMission () {
+    prevMission() {
       console.log('prev')
     },
-    nextMission () {
+    nextMission() {
       console.log('next')
     }
   },
@@ -57,5 +53,5 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 </style>

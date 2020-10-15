@@ -1,5 +1,9 @@
 <template>
-<div class></div>
+<div class>
+  <date-picker></date-picker>
+  <!-- 是否置顶 -->
+  <v-switch v-model="setTop" inset label="是否置顶"></v-switch>
+</div>
 </template>
 
 <script>
@@ -10,7 +14,7 @@ export default {
     DatePicker: () => import('./DatePicker.vue')
   },
   data: () => ({
-
+    setTop: false
   }),
   props: {},
   methods: {},
