@@ -6,9 +6,9 @@
   <!-- 增删改项目的部分 -->
   <v-row justify="center" align-content="center">
     <v-col cols="10" :class="addProPartMain">
-      <v-autocomplete v-for="n in partListSize" :key="n" class="ma-2" v-model="selectedMembers" :items="member" filled chips color="blue-grey lighten-2" label="选择参与者" item-text="name" item-value="name" multiple>
+      <v-autocomplete v-for="n in partListSize" :key="n" class="ma-2" v-model="selectedMember" :items="member" auto-select-first chips clearable dense rounded solo solo-inverted color="blue-grey lighten-2" label="选择参与者" item-text="name" item-value="name">
         <template v-slot:selection="data">
-          <v-chip v-bind="data.attrs" :input-value="data.selected" close @click="data.select" @click:close="remove(data.item)">
+          <v-chip v-bind="data.attrs" class="white--text" :input-value="data.selected" @click="data.select" dark>
             <v-avatar left>
               <v-img :src="data.item.avatar"></v-img>
             </v-avatar>
@@ -31,8 +31,8 @@
         </template>
       </v-autocomplete>
     </v-col>
-    <v-col cols="2">
-      <v-icon @click="delPart">mdi-close-circle-outline</v-icon>
+    <v-col cols="2" class="d-flex pa-0 align-center">
+      <v-icon size="40" @click="delPart">mdi-close-circle-outline</v-icon>
     </v-col>
   </v-row>
 </div>
@@ -55,7 +55,7 @@ export default {
   data: () => ({
     //由于需要频繁增删
     partList: null,
-    selectedMembers: [],
+    selectedMember: '',
   }),
   methods: {
     //浅拷贝

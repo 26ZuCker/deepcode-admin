@@ -8,7 +8,7 @@
     direction="top"
     open-on-hover
     transition="slide-y-reverse-transition"
-    v-if="$route.name === 'schedule' || $route.name === 'mission'"
+    v-if="$route.name === 'schedule' || $route.name === 'project'"
   >
     <!-- 处于schedule页面的可行性功能：增加自定义日程，编辑自定义日程，搜索课程和日程 -->
     <template v-slot:activator>

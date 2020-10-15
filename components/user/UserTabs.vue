@@ -1,16 +1,9 @@
 <template>
-  <!-- 考虑采用tabs或是按钮组哪个效果好点 -->
-  <v-btn-toggle
-    v-model="currentTabs"
-    mandatory
-    tile
-    class="user-tabs elevation-1"
-    active-class=" white--text black"
-  >
-    <v-btn width="33%"> 通知 </v-btn>
-    <v-btn width="33%"> LeetCode </v-btn>
-    <v-btn width="34%"> 项目 </v-btn>
-  </v-btn-toggle>
+<!-- 考虑采用tabs或是按钮组哪个效果好点 -->
+<v-btn-toggle v-model="currentTabs" mandatory tile class="user-tabs elevation-1" active-class=" white--text black">
+  <v-btn width="50%"> LeetCode </v-btn>
+  <v-btn width="50%"> 通知 </v-btn>
+</v-btn-toggle>
 </template>
 
 <script>
@@ -20,10 +13,14 @@ export default {
   components: {},
   data: () => ({
     currentTabs: 0,
-    tabsMap: [
-      { index: 0, tab: 'NotList' },
-      { index: 1, tab: 'LeetCal' },
-      { index: 2, tab: 'ProList' },
+    tabsMap: [{
+        index: 1,
+        tab: 'LeetCal'
+      },
+      {
+        index: 0,
+        tab: 'NotList'
+      },
     ]
   }),
   props: {},
@@ -31,9 +28,10 @@ export default {
   computed: {},
   watch: {
     currentTabs: {
-      handler (n, o) {
+      handler(n, o) {
         this.$emit('onChangeTabs', this.tabsMap[n]['tab'])
-      }, immediate: true
+      },
+      immediate: true
     }
   },
 }

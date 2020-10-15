@@ -1,16 +1,16 @@
 <template>
 <!-- 从mission页面进入的发布任务页面 -->
 
-<v-container class="align-center blue-grey darken-1">
-  <v-card color="blue-grey darken-1" elevation="14" class="rounded-xl">
-    <v-toolbar flat color="blue-grey" dark>
+<v-container class="align-center blue-grey lighten-2">
+  <v-card elevation="14" class="rounded-xl blue-grey darken-1" max-height="1200">
+    <v-toolbar flat color="blue-grey darken-1" dark>
       <v-toolbar-title>为你的小组成员发布任务</v-toolbar-title>
     </v-toolbar>
 
     <!-- 任务标题 -->
-    <v-text-field filled label="标题" :value="title" class="ma-2"></v-text-field>
+    <v-text-field filled label="标题" :value="title" class="ma-2 blue-grey"></v-text-field>
     <!-- 任务描述 -->
-    <v-textarea filled label="描述" :value="text" class="ma-2"></v-textarea>
+    <v-textarea filled label="描述" :value="text" class="ma-2 blue-grey"></v-textarea>
 
     <!-- 用于发布项目 -->
     <add-pro v-if="releaseType === 'pro'"></add-pro>
@@ -20,6 +20,9 @@
     <v-divider></v-divider>
 
     <v-card-actions :class="releaseBottomBtnContainer">
+      <v-btn icon>
+        <v-icon size="40">mdi-plus-circle-multiple-outline</v-icon>
+      </v-btn>
       <v-btn color="blue-grey darken-3" class="ml-0 my-2" depressed :block="!isLgScreen($vuetify)" @click="release">
         发布
       </v-btn>

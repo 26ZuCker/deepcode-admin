@@ -16,12 +16,12 @@
 <script>
 export default {
   inheritAttrs: false,
-  name: 'mission',
+  name: 'project',
   components: {
-    MiStepper: () => import('@/components/mission/MiStepper'),
-    MiTimeline: () => import('@/components/mission/MiTimeline'),
-    MiHeader: () => import('@/components/mission/MiHeader'),
-    MiSteCard: () => import('@/components/mission/MiSteCard'),
+    MiStepper: () => import('@/components/project/MiStepper'),
+    MiTimeline: () => import('@/components/project/MiTimeline'),
+    MiHeader: () => import('@/components/project/MiHeader'),
+    MiSteCard: () => import('@/components/project/MiSteCard'),
   },
   data: () => ({
     items: [

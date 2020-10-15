@@ -5,7 +5,7 @@ const routeTitleMap = {
   office: '工作室',
   login: '登录',
   schedule: '日程安排',
-  mission: '任务',
+  project: '任务',
 };
 
 /**
@@ -16,7 +16,7 @@ const routeTitleMap = {
  */
 const routerItems = [
   { id: 1, title: '我的', icon: 'mdi-account-tie', url: '/user' },
-  { id: 2, title: '任务', icon: 'mdi-file-tree', url: '/mission' },
+  { id: 2, title: '任务', icon: 'mdi-file-tree', url: '/project' },
   {
     id: 3,
     title: '日程表',

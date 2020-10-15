@@ -2,16 +2,17 @@
 <v-sheet width="100%" color="blue-grey darken-2" :class="groupContainer">
   <!-- 文字描述 -->
   <v-card elevation="0" color="blue-grey darken-2" class="ma-3" :width="isLgScreen($vuetify) ? '30%' : '100%'">
-    <div class="white--text text-center ma-2 text-h4">我们如何管理</div>
+    <div class="white--text text-center ma-2 text-h4">我们如何工作</div>
 
-    <div class="white--text text-center">没有管理不成方圆</div>
-    <div class="white--text text-center">过于细化导致不妥</div>
+    <div class="white--text text-center">一套完整的工作体系</div>
+    <div class="white--text text-center">一套缜密的项目流程</div>
+
     <div class="blue--text darken-3 font-weight-black text-center" @click="$router.push('/recruit')">
       加入我们<v-icon color="blue darken-2" size="40" style="top: -2px">mdi-chevron-right</v-icon>
     </div>
   </v-card>
-  <!-- 组分类：前端，后端，算法，策划 -->
 
+  <!-- 组分类：前端，后端，算法，策划 -->
   <v-row justify="center" style="width=70%">
     <v-col v-for="i in groupTypes" :key="i.name" cols="5">
       <v-card max-width="300" max-height="500">
@@ -30,35 +31,14 @@
 
 <script>
 import {
-  mapGetters
+  mapGetters,
+  mapState
 } from 'vuex'
 export default {
   inheritAttrs: false,
-  name: '',
+  name: 'GroupIntr',
   components: {},
-  data: () => ({
-    groupTypes: [{
-        name: '前端',
-        des: '页面设计',
-        icon: 'mdi-material-design'
-      },
-      {
-        name: '后端',
-        des: '数据管理',
-        icon: 'mdi-server-security'
-      },
-      {
-        name: '算法',
-        des: '数据生成',
-        icon: 'mdi-head-lightbulb-outline'
-      },
-      {
-        name: '深度学习',
-        des: '图像识别',
-        icon: 'mdi-image-auto-adjust'
-      }
-    ]
-  }),
+  data: () => ({}),
   props: {},
   methods: {},
   computed: {
@@ -78,6 +58,9 @@ export default {
         'text-center': !this.isLgScreen(this.$vuetify),
       }
     },
+    ...mapState({
+      groupTypes: (state) => state.project.groupTypes
+    }),
     ...mapGetters({
       isLgScreen: 'showCom/isLgScreen'
     })

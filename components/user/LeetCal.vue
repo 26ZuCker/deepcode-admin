@@ -8,21 +8,15 @@
   插槽由上至下摆放顺序：top顶部标题 -> header类别栏 -> body.prepend类别栏下标题
 -->
 <template>
-  <v-card light elevation="0" width="100%" class="ma-3">
-    <!-- 第一行为类别栏 -->
-    <v-card-title class="rank-table-title">
-      <span>LeetCode榜单</span>
-      <span>18周</span>
-    </v-card-title>
-    <v-data-table
-      :headers="headersData"
-      :items="rankData"
-      hide-default-footer
-      mobile-breakpoint="0"
-      class="elevation-1"
-    >
-      <!-- 整一行的配置 -->
-      <!-- <template v-slot:body="{ item }">
+<v-card light elevation="0" width="100%" class="ma-3" v-once>
+  <!-- 第一行为类别栏 -->
+  <v-card-title class="rank-table-title">
+    <span>LeetCode榜单</span>
+    <span>18周</span>
+  </v-card-title>
+  <v-data-table :headers="headersData" :items="rankData" hide-default-footer mobile-breakpoint="0" class="elevation-1">
+    <!-- 整一行的配置 -->
+    <!-- <template v-slot:body="{ item }">
         <tbody>
           <tr v-for="item in items" :key="item.name">
             <td>{{ item.name }}</td>
@@ -34,32 +28,37 @@
           </tr>
         </tbody>
       </template>-->
-      <!-- 具体一行的某项 -->
-      <template v-slot:item.nickname="{ item }">
-        <div class="text-truncate rank-table-nick">
-          <v-avatar size="40" class="mr-2">
-            <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
-          </v-avatar>
-          {{ item.nickname }}
-          <v-icon v-if="achievementBadge(item.achievement)" class="ml-2">{{
+    <!-- 具体一行的某项 -->
+    <template v-slot:item.nickname="{ item }">
+      <div class="text-truncate rank-table-nick">
+        <v-avatar size="40" class="mr-2">
+          <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
+        </v-avatar>
+        {{ item.nickname }}
+        <v-icon v-if="achievementBadge(item.achievement)" class="ml-2">{{
             achievementBadge(item.achievement)
           }}</v-icon>
-        </div>
-      </template>
-      <!-- 表格footer右下角放评定规则 -->
-      <template v-slot:footer>
-        <p class="text-right">评定细则</p>
-        <p class="text-right">以下评判标准优先级自顶向下</p>
-        <p class="text-right">1.自动累计其次</p>
-        <p class="text-right">2.按照</p>
-      </template>
-    </v-data-table>
-  </v-card>
+      </div>
+    </template>
+    <!-- 表格footer右下角放评定规则 -->
+    <template v-slot:footer>
+      <p class="text-right">评定细则</p>
+      <p class="text-right">以下评判标准优先级自顶向下</p>
+      <p class="text-right">1.自动累计其次</p>
+      <p class="text-right">2.按照</p>
+    </template>
+  </v-data-table>
+</v-card>
 </template>
 
 <script>
-import { achievementBadgeMap } from '@/apis/user.js';
-import { headersData, rankData } from '@/apis/rank.js'
+import {
+  achievementBadgeMap
+} from '@/apis/user.js';
+import {
+  headersData,
+  rankData
+} from '@/apis/rank.js'
 import registerVue from '../../pages/register.vue';
 export default {
   inheritAttrs: false,
@@ -69,18 +68,18 @@ export default {
     rankData: []
   }),
   computed: {
-    isShowRankData () {
+    isShowRankData() {
       return function (key) {
         return key !== 'id'
       }
     },
-    achievementBadge () {
+    achievementBadge() {
       return function (achievement) {
         return achievement.length && (achievementBadgeMap[achievement[0]])
       }
     }
   },
-  created () {
+  created() {
     this.headersData = Object.freeze(headersData)
     this.rankData = Object.freeze(rankData)
   }
@@ -88,7 +87,7 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .rank-table-nick {
   font-size: 0.5rem;
   display: flex;
@@ -96,6 +95,7 @@ export default {
   align-items: center;
   padding: 0;
 }
+
 .rank-table-title {
   display: flex;
   justify-content: space-between;

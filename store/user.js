@@ -79,6 +79,7 @@ export const state = () => ({
       avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
     },
   ],
+  permission: [],
 });
 export const mutations = {
   //清除token和userInfo
