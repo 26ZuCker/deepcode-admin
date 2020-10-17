@@ -24,4 +24,14 @@ export const state = () => ({
 });
 export const mutations = {};
 export const actions = {};
-export const getters = {};
+export const getters = {
+  newPart() {
+    return {
+      color: 'red lighten-2',
+      icon: 'mdi-star',
+      title: '模块标题',
+      des: '模块笔记',
+      is_finish: false,
+    };
+  },
+};

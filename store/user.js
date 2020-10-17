@@ -5,7 +5,7 @@ export const state = () => ({
   userInfo: {},
   token: '',
   //此处只保存id，后续根据该id获取所属组
-  member: [
+  memberList: [
     {
       header: '开发组',
     },

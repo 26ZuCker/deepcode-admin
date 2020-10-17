@@ -42,6 +42,13 @@
     </template>
     <!-- 表格footer右下角放评定规则 -->
     <template v-slot:footer>
+      <v-sheet v-for="i in lastWeek" :key="i.name" elevation="10" class="leet-week-container">
+        {{ i.type }}
+        <v-avatar>
+          <v-img :src="i.avatar"></v-img>
+        </v-avatar>
+        {{ i.week_solved_num }}-{{ i.week_submit_num }}
+      </v-sheet>
       <p class="text-right">评定细则</p>
       <p class="text-right">以下评判标准优先级自顶向下</p>
       <p class="text-right">1.自动累计其次</p>
@@ -57,15 +64,16 @@ import {
 } from '@/apis/user.js';
 import {
   headersData,
-  rankData
+  rankData,
+  lastWeek
 } from '@/apis/rank.js'
-import registerVue from '../../pages/register.vue';
 export default {
   inheritAttrs: false,
   name: 'LeetCal',
   data: () => ({
     headersData: [],
-    rankData: []
+    rankData: [],
+    lastWeek: []
   }),
   computed: {
     isShowRankData() {
@@ -82,6 +90,7 @@ export default {
   created() {
     this.headersData = Object.freeze(headersData)
     this.rankData = Object.freeze(rankData)
+    this.lastWeek = Object.freeze(lastWeek)
   }
 
 }
@@ -99,5 +108,12 @@ export default {
 .rank-table-title {
   display: flex;
   justify-content: space-between;
+}
+
+.leet-week-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 </style>

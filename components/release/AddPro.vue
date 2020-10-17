@@ -6,6 +6,7 @@
   <!-- 增删改项目的部分 -->
   <v-row justify="center" align-content="center">
     <v-col cols="10" :class="addProPartMain">
+      <!-- 由于需要对v-for渲染的数组进行动态增删所以必须添加非索引的key -->
       <v-autocomplete v-for="n in partListSize" :key="n" class="ma-2" v-model="selectedMember" :items="member" auto-select-first chips clearable dense rounded solo solo-inverted color="blue-grey lighten-2" label="选择参与者" item-text="name" item-value="name">
         <template v-slot:selection="data">
           <v-chip v-bind="data.attrs" class="white--text" :input-value="data.selected" @click="data.select" dark>
