@@ -1,7 +1,7 @@
-<template functional>
-  <v-snackbar right>
-    {{ props.msg }}
-  </v-snackbar>
+<template>
+<v-snackbar right>
+  {{ props.msg }}
+</v-snackbar>
 </template>
 
 <script>
@@ -12,7 +12,10 @@ export default {
 
   }),
   props: {
-    msg: { type: String, default: '' }
+    msg: {
+      type: String,
+      default: ''
+    }
   }
 }
 </script>

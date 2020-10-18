@@ -10,7 +10,7 @@
       </v-btn>
     </v-slide-item>
   </v-slide-group>
-  <pro-sli-card></pro-sli-card>
+  <pro-other-card></pro-other-card>
 </v-sheet>
 </template>
 
@@ -23,7 +23,7 @@ export default {
     }
   },
   components: {
-    ProSliCard: () => import('./ProSliCard.vue')
+    ProOtherCard: () => import('./ProOtherCard.vue')
   },
   watch: {
     steps(val) {

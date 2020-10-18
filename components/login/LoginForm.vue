@@ -24,6 +24,7 @@ export default {
     isUpdating: '',
     account: '',
     password: '',
+    isShowRegister: false
   }),
   props: {},
   methods: {},

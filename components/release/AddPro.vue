@@ -36,6 +36,16 @@
       <v-icon size="40" @click="delPart">mdi-close-circle-outline</v-icon>
     </v-col>
   </v-row>
+  <v-divider></v-divider>
+
+  <v-card-actions :class="releaseBottomBtnContainer">
+    <v-btn icon>
+      <v-icon size="40">mdi-head-plus-outline</v-icon>
+    </v-btn>
+    <v-btn color="blue-grey darken-3" class="ml-0 my-2" depressed :block="!isLgScreen($vuetify)">
+      发布
+    </v-btn>
+  </v-card-actions>
 </div>
 </template>
 
@@ -82,6 +92,12 @@ export default {
 
       }
     },
+    releaseBottomBtnContainer() {
+      return {
+        space: this.isLgScreen(this.$vuetify),
+        normal: !this.isLgScreen(this.$vuetify),
+      }
+    },
     ...mapGetters({
       isLgScreen: 'showCom/isLgScreen'
     }),
@@ -103,5 +119,17 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.space {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.normal {
+  display: flex;
+  flex-direction: column;
 }
 </style>
