@@ -4,6 +4,9 @@
  */
 export const state = () => ({
   form_data: null,
+  //以下模板用于渲染表单元素
+  new_login_data: [],
+  new_recruit_data: [],
 });
 export const mutations = {
   update_form_data(state, form_obj) {

@@ -27,10 +27,10 @@
     </v-menu>
   </v-sheet>
 
-  <v-sheet class="cal-header-member">
-    <v-menu transition="slide-y-transition" bottom offset-y max-height="300" rounded="b-xl">
+  <v-sheet class="cal-header-member mb-3">
+    <v-menu transition="slide-y-transition" bottom offset-y rounded="b-xl">
       <template v-slot:activator="{ attrs, on }">
-        <v-btn v-bind="attrs" v-on="on">
+        <v-btn v-on="on" v-bind="attrs" text width="180" active-class="black white--text" class="d-flex justify-space-around text-h6">
           <v-avatar left>
             <v-img :src="members[0].avatar"></v-img>
           </v-avatar>
@@ -39,7 +39,7 @@
       </template>
       <v-list>
         <v-list-item v-for="item in memberList" :key="item.name" link>
-          <v-chip v-bind="attrs" v-on="on">
+          <v-chip>
             <v-avatar left>
               <v-img :src="item.avatar"></v-img>
             </v-avatar>

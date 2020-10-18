@@ -11,19 +11,28 @@
 
     <!-- 表单输入框 -->
     <v-container>
-      <login-form></login-form>
+      <login-form :isShowRegister="isShowRegister" :isLeet="isLeet"></login-form>
     </v-container>
 
     <v-divider></v-divider>
 
     <!-- 底部按钮 -->
     <v-card-actions :class="loginBottomBtnContainer">
-      <v-btn @click="isShowRegister = !isShowRegister" :block="!isLgScreen($vuetify)" class="my-2">
-        <v-icon left>mdi-update</v-icon>
-        加入我们
-      </v-btn>
+      <v-scale-transition>
+        <v-btn @click="isShowRegister = !isShowRegister" v-if="!isShowRegister" :block="!isLgScreen($vuetify)" class="my-2">
+          <v-icon left>mdi-update</v-icon>
+          加入我们
+        </v-btn>
+      </v-scale-transition>
 
-      <v-btn :disabled="autoUpdate" :loading="isUpdating" class="my-2 ml-0" color="blue-grey darken-3" :block="!isLgScreen($vuetify)" @click="isUpdating = true">
+      <v-scale-transition>
+        <div v-if="isShowRegister" class="switch-inline">
+          <span>是否开发组或算法组</span>
+          <v-switch v-model="isLeet" inset class="ml-3"> </v-switch>
+        </div>
+      </v-scale-transition>
+
+      <v-btn :loading="isUpdating" class="my-2 ml-0" color="blue-grey darken-3" :block="!isLgScreen($vuetify)" @click="isUpdating = true">
         <v-icon left>mdi-update</v-icon>
         {{ submitText }}
       </v-btn>
@@ -52,7 +61,8 @@ export default {
       officeName: 'DEEP CODE',
       userName: '小岚',
       title: '欢迎你的加入',
-      isShowRegister: false
+      isShowRegister: false,
+      isLeet: false
     }
   },
 
@@ -62,6 +72,12 @@ export default {
         setTimeout(() => (this.isUpdating = false), 3000)
       }
     },
+    isShowRegister: {
+      handler(n) {
+        console.log(n)
+      },
+      immediate: true
+    }
   },
   computed: {
     loginBottomBtnContainer() {
@@ -103,6 +119,12 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+}
+
+.switch-inline {
+  display: flex;
+  flex-direction: row;
   align-items: center;
 }
 

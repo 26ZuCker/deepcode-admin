@@ -7,8 +7,9 @@
     <div class="white--text text-center">一套完整的工作体系</div>
     <div class="white--text text-center">一套缜密的项目流程</div>
 
-    <div class="blue--text darken-3 font-weight-black text-center" @click="$router.push('/recruit')">
-      加入我们<v-icon color="blue darken-2" size="40" style="top: -2px">mdi-chevron-right</v-icon>
+    <div class="blue--text darken-3 font-weight-black text-center">
+      加入我们
+      <v-icon color="blue darken-2" size="40" style="top: -2px" @click="$router.push('/recruit')">mdi-chevron-right</v-icon>
     </div>
   </v-card>
 
