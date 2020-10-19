@@ -16,15 +16,31 @@
   <!-- 组分类：前端，后端，算法，策划 -->
   <v-row justify="center" style="width=70%">
     <v-col v-for="i in groupTypes" :key="i.name" cols="5">
-      <v-card max-width="300" max-height="500">
-        <v-card-title :class="groupCardContainer">
-          <v-icon size="30" color="blue darken-1">{{ i.icon }}</v-icon>
-          <div class="ma-1 text-h5 blue-grey--text text--darken-1">
-            {{ i.name }}
-          </div>
-        </v-card-title>
-        <v-card-text :class="groupCardText">{{ i.des }}</v-card-text>
-      </v-card>
+      <v-hover>
+        <template v-slot:default="{ hover }">
+          <v-card max-width="300" max-height="500" :dark="hover">
+            <v-card-title :class="groupCardContainer">
+              <v-icon size="30" :color="hover ? 'white' : 'blue darken-1'">{{
+                  i.icon
+                }}</v-icon>
+              <div :class="hoverText(hover)">
+                {{ i.name }}
+              </div>
+            </v-card-title>
+            <v-card-text :class="groupCardText">{{ i.des }}</v-card-text>
+            <v-sheet width="36" height="36" class="groupCardBottom ma-0">
+              <span v-if="!hover" class="subtitle-2" style="width: 100%">{{
+                  i.des
+                }}</span>
+              <v-scroll-y-transition>
+                <v-btn v-if="hover" icon>
+                  <v-icon>mdi-arrow-right-bold-circle-outline</v-icon>
+                </v-btn>
+              </v-scroll-y-transition>
+            </v-sheet>
+          </v-card>
+        </template>
+      </v-hover>
     </v-col>
   </v-row>
 </v-sheet>
@@ -43,10 +59,23 @@ export default {
   props: {},
   methods: {},
   computed: {
+    hoverText() {
+      return function (hover) {
+        return {
+          'ma-1': true,
+          'text-h5': true,
+          'white--text': hover,
+          'blue-grey--text': !hover,
+          'text--darken-1': !hover
+        }
+      }
+    },
     groupContainer() {
+      const bool = this.isLgScreen(this.$vuetify)
       return {
-        'lgS': this.isLgScreen(this.$vuetify),
-        'smallS': !this.isLgScreen(this.$vuetify),
+        'lgS': bool,
+        'smallS': !bool,
+        'pb-5': !bool,
       }
     },
     groupCardContainer() {
@@ -91,8 +120,9 @@ export default {
   align-items: center;
 }
 
-.aaa {
-  text-align: center;
-  justify-items: center;
+.groupCardBottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

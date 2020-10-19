@@ -109,6 +109,14 @@ const change_pro = decorRequest(http, proApiMap['change_pro']);
  */
 const change_my_part = decorRequest(http, proApiMap['change_my_part']);
 
+const part_template = {
+  color: 'red lighten-2',
+  icon: 'mdi-star',
+  title: '定制你的模块标识',
+  des: '记录你的模块历程',
+  is_finish: false,
+};
+
 export {
   post_pro,
   get_pro,
@@ -117,4 +125,5 @@ export {
   change_pro,
   change_my_part,
   proPart,
+  part_template,
 };

@@ -1,52 +1,28 @@
 <template>
-<div class>
-  <!-- ddl设置 -->
-  <date-picker type="pro"></date-picker>
+  <div class>
+    <!-- ddl设置 -->
+    <date-picker type="pro"></date-picker>
 
-  <!-- 增删改项目的部分 -->
-  <v-row justify="center" align-content="center">
-    <v-col cols="10" :class="addProPartMain">
-      <!-- 由于需要对v-for渲染的数组进行动态增删所以必须添加非索引的key -->
-      <v-autocomplete v-for="n in partListSize" :key="n" class="ma-2" v-model="selectedMember" :items="member" auto-select-first chips clearable dense rounded solo solo-inverted color="blue-grey lighten-2" label="选择参与者" item-text="name" item-value="name">
-        <template v-slot:selection="data">
-          <v-chip v-bind="data.attrs" class="white--text" :input-value="data.selected" @click="data.select" dark>
-            <v-avatar left>
-              <v-img :src="data.item.avatar"></v-img>
-            </v-avatar>
-            {{ data.item.name }}
-          </v-chip>
-        </template>
-        <template v-slot:item="data">
-          <template v-if="typeof data.item !== 'object'">
-            <v-list-item-content v-text="data.item"></v-list-item-content>
-          </template>
-          <template v-else>
-            <v-list-item-avatar>
-              <img :src="data.item.avatar" />
-            </v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title v-html="data.item.name"></v-list-item-title>
-              <v-list-item-subtitle v-html="data.item.group"></v-list-item-subtitle>
-            </v-list-item-content>
-          </template>
-        </template>
-      </v-autocomplete>
-    </v-col>
-    <v-col cols="2" class="d-flex pa-0 align-center">
-      <v-icon size="40" @click="delPart">mdi-close-circle-outline</v-icon>
-    </v-col>
-  </v-row>
-  <v-divider></v-divider>
+    <!-- 增删改项目的部分 -->
+    <pro-part></pro-part>
 
-  <v-card-actions :class="releaseBottomBtnContainer">
-    <v-btn icon>
-      <v-icon size="40">mdi-head-plus-outline</v-icon>
-    </v-btn>
-    <v-btn color="blue-grey darken-3" class="ml-0 my-2" depressed :block="!isLgScreen($vuetify)">
-      发布
-    </v-btn>
-  </v-card-actions>
-</div>
+    <v-divider></v-divider>
+
+    <!--  -->
+    <v-card-actions :class="releaseBottomBtnContainer">
+      <v-btn icon>
+        <v-icon size="40">mdi-head-plus-outline</v-icon>
+      </v-btn>
+      <v-btn
+        color="blue-grey darken-3 white--text"
+        class="ml-0 my-2"
+        depressed
+        :block="!isLgScreen($vuetify)"
+      >
+        发布
+      </v-btn>
+    </v-card-actions>
+  </div>
 </template>
 
 <script>
@@ -56,12 +32,13 @@ import {
 } from 'vuex'
 import {
   proPart
-} from '@/apis/pro.js'
+} from '@/apis/project.js'
 export default {
   inheritAttrs: false,
   name: '',
   components: {
-    DatePicker: () => import('./DatePicker.vue')
+    DatePicker: () => import('./DatePicker.vue'),
+    ProPart: () => import('./ProPart.vue')
   },
   data: () => ({
     //由于需要频繁增删
@@ -70,32 +47,33 @@ export default {
   }),
   methods: {
     //浅拷贝
-    addPart() {
+    addPart () {
       this.partList.set(this.partList.size + 1, {
         ...proPart
       })
     },
-    delPart(index) {
+    delPart (index) {
       this.partList.delete(index)
     },
-    remove(item) {
+    remove (item) {
       const index = this.selectedMembers.indexOf(item.name)
       if (index >= 0) this.selectedMembers.splice(index, 1)
     },
   },
   computed: {
-    partListSize() {
+    partListSize () {
       return this.partList && this.partList.size || 0
     },
-    addProPartMain() {
+    addProPartMain () {
       return {
 
       }
     },
-    releaseBottomBtnContainer() {
+    releaseBottomBtnContainer () {
+      const bool = this.isLgScreen(this.$vuetify)
       return {
-        space: this.isLgScreen(this.$vuetify),
-        normal: !this.isLgScreen(this.$vuetify),
+        space: bool,
+        normal: !bool,
       }
     },
     ...mapGetters({
@@ -105,7 +83,7 @@ export default {
       member: (state) => state.user.member
     })
   },
-  mounted() {
+  mounted () {
     this.partList = new Map()
     this.addPart()
     console.log()

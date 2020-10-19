@@ -1,21 +1,20 @@
 <template>
-<v-sheet class="date-picker-container" color="blue-grey darken-1">
-  <!-- 标题，date和手动选择时间 -->
-  <v-sheet :class="pickerTitleContainer" color="blue-grey darken-1">
-    <!-- 标题 -->
-    <div class="text-h3 white--text">{{ pickerTitle }}</div>
-    <!-- date -->
-    <div class="text-h4 white--text">{{ selectDate }}</div>
-    <!-- 手动选择时间 -->
-    <template v-if="pickerType === 'sch'">
-      <v-select solo dense v-model="selectTime" :items="hours" append-outer-icon="mdi-plus-thick" prepend-icon="mdi-window-minimize" menu-props="auto" hide-details single-line></v-select>
-      <span class="font-weight-black">:</span>
-      <v-select solo dense v-model="selectTime" :items="seconds" append-outer-icon="mdi-plus-thick" prepend-icon="mdi-window-minimize" menu-props="auto" hide-details single-line></v-select>
+<v-sheet class="date-picker-container">
+  <v-menu ref="menu" offset-y v-model="menu" :close-on-content-click="false" :return-value.sync="selectDates" transition="scale-transition" min-width="290px">
+    <template v-slot:activator="{ on, attrs }">
+      <v-text-field readonly v-bind="attrs" v-on="on" v-model="dateRangeText" prepend-icon="mdi-calendar">
+        <template v-slot:prepend>始末日期</template>
+        <template v-slot:label> 始末日期 </template>
+      </v-text-field>
     </template>
-  </v-sheet>
-  <!-- pc端右侧月历 -->
-  <v-date-picker v-model="selectDate" dark :show-current="currentDate" no-title></v-date-picker>
-  <!-- 移动端点击底部抽屉显示月历 -->
+    <v-date-picker v-model="selectDates" no-title scrollable range>
+      <v-spacer></v-spacer>
+      <v-btn text color="primary" @click="menu = false"> Cancel </v-btn>
+      <v-btn text color="primary" @click="$refs.menu.save(selectDates)">
+        OK
+      </v-btn>
+    </v-date-picker>
+  </v-menu>
 </v-sheet>
 </template>
 
@@ -34,7 +33,9 @@ export default {
   components: {},
   data: () => ({
     selectDate: '',
-    selectTime: ''
+    selectTime: '',
+    menu: false,
+    selectDates: ['2020-10-18', '2020-10-19']
   }),
   props: {
     pickerType: {
@@ -54,6 +55,9 @@ export default {
   computed: {
     pickerTitleContainer() {
       return {}
+    },
+    dateRangeText() {
+      return this.selectDates.join(' ~ ')
     },
     datePickerContainer() {
       return {}

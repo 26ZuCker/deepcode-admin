@@ -1,5 +1,5 @@
 <template>
-<v-container class="flex justify-center" fill-height>
+<v-container class="flex justify-center pb-10" fill-height>
   <v-card dark color="blue-grey darken-1" elevation="14">
     <!-- 顶部loading条，点击提交后的等待 -->
     <template v-slot:progress>
@@ -11,7 +11,7 @@
 
     <!-- 表单输入框 -->
     <v-container>
-      <login-form :isShowRegister="isShowRegister" :isLeet="isLeet"></login-form>
+      <login-form @onNotShowRegister="isShowRegister = false" :isShowRegister="isShowRegister" :isLeet="isLeet"></login-form>
     </v-container>
 
     <v-divider></v-divider>
@@ -81,9 +81,10 @@ export default {
   },
   computed: {
     loginBottomBtnContainer() {
+      const bool = this.isLgScreen(this.$vuetify)
       return {
-        space: this.isLgScreen(this.$vuetify),
-        normal: !this.isLgScreen(this.$vuetify),
+        space: bool,
+        normal: !bool,
       }
     },
     submitText() {

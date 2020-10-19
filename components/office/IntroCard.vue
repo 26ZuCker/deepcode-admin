@@ -38,11 +38,12 @@ export default {
   methods: {},
   computed: {
     introContainerClass () {
+      const bool = this.isLgScreen(this.$vuetify)
       return {
         'pa-0': true,
         'ma-auto': true,
-        'lgS': this.isLgScreen(this.$vuetify),
-        'smallS': !this.isLgScreen(this.$vuetify),
+        'lgS': bool,
+        'smallS': !bool,
       }
     },
     ...mapGetters({

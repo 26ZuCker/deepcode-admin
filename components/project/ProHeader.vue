@@ -24,7 +24,7 @@
     </v-avatar>
     <span>发布于2020-10-16</span>
   </v-card-actions>
-  <v-btn color="primary" fab outlined dark absolute bottom left class="mb-3 offset-left">
+  <v-btn color="primary" fab text dark absolute bottom left class="mb-3 offset-left">
     <v-icon size="67">mdi-progress-check</v-icon>
   </v-btn>
 </v-card>

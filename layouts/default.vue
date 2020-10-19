@@ -16,11 +16,10 @@
   </v-sheet>
 
   <!-- 页尾占位 -->
-  <v-sheet class="default-layout-topbar-time white" elevation="0" style="height: 20px">
-  </v-sheet>
+  <v-sheet class="white" elevation="0" style="height: 20px"> </v-sheet>
 
   <!-- 页尾 -->
-  <v-footer absolute class="blue-grey darken-1" padless>
+  <v-footer absolute class="blue-grey darken-1" height="30ox" padless>
     <span>&copy; {{ new Date().getFullYear() }}</span>
   </v-footer>
 
@@ -33,6 +32,7 @@
       </div>
     </template>
   </v-navigation-drawer>
+
   <!-- 底部浮动按钮 -->
   <float-btn></float-btn>
 </v-app>
@@ -90,7 +90,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.aaa {
-  display: flex;
-}
 </style>

@@ -36,9 +36,10 @@ export default {
   methods: {},
   computed: {
     releaseBottomBtnContainer () {
+      const bool = this.isLgScreen(this.$vuetify)
       return {
-        space: this.isLgScreen(this.$vuetify),
-        normal: !this.isLgScreen(this.$vuetify),
+        space: bool,
+        normal: !bool,
       }
     },
     ...mapGetters({
