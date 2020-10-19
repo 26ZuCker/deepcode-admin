@@ -8,6 +8,8 @@
 
     <!-- 当前任务当前负责人即登录用户自定义模块进度 -->
     <pro-timeline></pro-timeline>
+
+    <float-btn></float-btn>
   </v-container>
 </template>
 
@@ -16,12 +18,12 @@ export default {
   inheritAttrs: false,
   name: 'project',
   components: {
-    ProSlider: () => import('@/components/project/ProSlider'),
-    ProTimeline: () => import('@/components/project/ProTimeline'),
-    ProHeader: () => import('@/components/project/ProHeader'),
+    ProSlider: () => import('@/components/project/ProSlider.vue'),
+    ProTimeline: () => import('@/components/project/ProTimeline.vue'),
+    ProHeader: () => import('@/components/project/ProHeader.vue'),
+    FloatBtn: () => import('@/components/FloatBtn.vue')
   },
-  data: () => ({
-  }),
+  data: () => ({}),
   props: {},
   methods: {
     prevMission () {

@@ -1,6 +1,6 @@
 <template>
 <v-sheet class="date-picker-container">
-  <v-menu ref="menu" offset-y v-model="menu" :close-on-content-click="false" :return-value.sync="selectDates" transition="scale-transition" min-width="290px">
+  <v-menu ref="menu" offset-y v-model="menu" :close-on-content-click="false" :return-value.sync="selectDates" transition="slide-y-transition" min-width="290px">
     <template v-slot:activator="{ on, attrs }">
       <v-text-field readonly v-bind="attrs" v-on="on" v-model="dateRangeText" prepend-icon="mdi-calendar">
         <template v-slot:prepend>始末日期</template>

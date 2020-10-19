@@ -1,14 +1,27 @@
 <template>
-  <div class>
+  <v-container>
     <!-- ddl设置 -->
     <date-picker type="pro"></date-picker>
+
+    <v-divider></v-divider>
+
+    <!-- 统计模块数和参与人数 -->
+    <div class="partSummary ma-2">
+      <div>
+        <span>模块</span>
+        <span class="font-weight-black">3</span>
+        <span class="pl-2 ml-2 border-left">人数</span>
+        <span class="font-weight-black">5</span>
+      </div>
+      <v-btn icon><v-icon>mdi-head-sync-outline</v-icon></v-btn>
+    </div>
 
     <!-- 增删改项目的部分 -->
     <pro-part></pro-part>
 
     <v-divider></v-divider>
 
-    <!--  -->
+    <!-- 底部交互按钮 -->
     <v-card-actions :class="releaseBottomBtnContainer">
       <v-btn icon>
         <v-icon size="40">mdi-head-plus-outline</v-icon>
@@ -22,7 +35,7 @@
         发布
       </v-btn>
     </v-card-actions>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -109,5 +122,15 @@ export default {
 .normal {
   display: flex;
   flex-direction: column;
+}
+.partSummary {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.border-left {
+  border-left: 0.5px solid black;
 }
 </style>

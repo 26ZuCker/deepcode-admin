@@ -3,9 +3,22 @@
 <v-card>
   <v-card-text class="pro-header-title blue-grey darken-1">
     <span class="text-h4 white--text">管理系统</span>
-    <v-btn icon>
-      <v-icon>mdi-dots-vertical</v-icon>
-    </v-btn>
+    <v-menu transition="slide-y-transition" bottom>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn icon v-bind="attrs" v-on="on">
+          <v-icon color="white">mdi-dots-vertical</v-icon>
+        </v-btn>
+      </template>
+      <v-list shaped>
+        <v-list-item-group color="primary">
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>历史记录</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-menu>
   </v-card-text>
   <v-container class="blue-grey lighten-2">
     <div>

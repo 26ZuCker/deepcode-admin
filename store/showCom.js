@@ -26,7 +26,9 @@ const routerItems = [
   { id: 4, title: '工作室', icon: 'mdi-account-group-outline', url: '/office' },
 ];
 
-const darkBackGroundItems = ['login', 'release-releaseType'];
+const darkBackGroundRoutes = ['login', 'release-releaseType'];
+
+const floatBtnRoutes = ['schedule', 'project'];
 
 //负责控制layout内组件的全局展示，保存一些全局组件状态如左侧边栏的显示
 export const state = () => ({
@@ -58,5 +60,6 @@ export const getters = {
   //此处改为空值联合
   currentRouteTitle: () => (name) => routeTitleMap[name] || null,
   //需要整个页面的背景都改为深色的route.name
-  darkBackGround: () => (name) => darkBackGroundItems.includes(name),
+  isDarkBackGround: () => (name) => darkBackGroundRoutes.includes(name),
+  isFloatBtnRoutes: () => (name) => floatBtnRoutes.includes(name),
 };

@@ -4,22 +4,26 @@
   <v-container class="align-center blue-grey lighten-2">
     <v-card elevation="14" class="rounded-xl" max-height="1200">
       <v-toolbar flat dark>
-        <v-toolbar-title>为你的小组成员发布任务</v-toolbar-title>
+        <v-toolbar-title>{{
+          releaseType === 'project'
+            ? '为你的小组成员发布任务'
+            : '定制你的日程安排'
+        }}</v-toolbar-title>
       </v-toolbar>
 
       <!-- 任务标题 -->
       <v-text-field
-        filled
+        outlined
         label="标题"
         :value="title"
         class="ma-2"
       ></v-text-field>
       <!-- 任务描述 -->
-      <v-textarea filled label="描述" :value="text" class="ma-2"></v-textarea>
+      <v-textarea outlined label="描述" :value="text" class="ma-2"></v-textarea>
 
       <slot></slot>
     </v-card>
-    <v-sheet color=" blue-grey lighten-2" height="50px"></v-sheet>
+    <v-sheet color=" blue-grey lighten-2" height="40px"></v-sheet>
   </v-container>
 </template>
 
@@ -37,11 +41,12 @@ export default {
   },
   data () {
     return {
-      releaseType: '',
       title: '',
       text: '',
-
     }
+  },
+  props: {
+    releaseType: { type: String, default: 'project' }
   },
   methods: {
     release () {
@@ -67,13 +72,6 @@ export default {
       isLgScreen: 'showCom/isLgScreen'
     })
   },
-  created () {
-    const {
-      releaseType
-    } = this.$route.params
-    this.releaseType = releaseType
-    console.log(this.releaseType)
-  }
 }
 </script>
 

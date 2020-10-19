@@ -10,7 +10,7 @@
     </v-container>
   </v-sheet>
 
-  <v-sheet height="100%" :class="darkBackGround($route.name) ? 'blue-grey lighten-2' : ''">
+  <v-sheet height="100%" :class="isDarkBackGround($route.name) ? 'blue-grey lighten-2' : ''">
     <!-- 主体 -->
     <nuxt />
   </v-sheet>
@@ -70,7 +70,7 @@ export default {
     ...mapGetters({
       isLogin: 'user/isLogin',
       isLgScreen: 'showCom/isLgScreen',
-      darkBackGround: 'showCom/darkBackGround'
+      isDarkBackGround: 'showCom/isDarkBackGround'
     })
   },
   mounted() {
