@@ -1,5 +1,6 @@
 import { setToken, removeToken } from '@/utils/localStorage/token.js';
-import { get_userInfo, login, logout } from '@/apis/user.js';
+import { get_userInfo } from '@/apis/user/information.js';
+import { login, logout } from '@/apis/user/login.js';
 
 export const state = () => ({
   userInfo: {},

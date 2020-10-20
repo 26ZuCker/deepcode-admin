@@ -1,44 +1,64 @@
 <template>
-<v-container class="flex justify-center pb-10" fill-height>
-  <v-card dark color="blue-grey darken-1" elevation="14">
-    <!-- 顶部loading条，点击提交后的等待 -->
-    <template v-slot:progress>
-      <v-progress-linear absolute color="green lighten-3" height="4" indeterminate></v-progress-linear>
-    </template>
+  <v-container class="flex justify-center pb-10" fill-height>
+    <v-card dark color="blue-grey darken-1" elevation="14">
+      <!-- 顶部loading条，点击提交后的等待 -->
+      <template v-slot:progress>
+        <v-progress-linear
+          absolute
+          color="green lighten-3"
+          height="4"
+          indeterminate
+        ></v-progress-linear>
+      </template>
 
-    <!-- 封面 -->
-    <back-img></back-img>
+      <!-- 封面 -->
+      <back-img></back-img>
 
-    <!-- 表单输入框 -->
-    <v-container>
-      <login-form @onNotShowRegister="isShowRegister = false" :isShowRegister="isShowRegister" :isLeet="isLeet"></login-form>
-    </v-container>
+      <!-- 表单输入框 -->
+      <v-container>
+        <login-form
+          @onNotShowRegister="isShowRegister = false"
+          :isShowRegister="isShowRegister"
+          :isLeet="isLeet"
+        ></login-form>
+      </v-container>
 
-    <v-divider></v-divider>
+      <v-divider></v-divider>
 
-    <!-- 底部按钮 -->
-    <v-card-actions :class="loginBottomBtnContainer">
-      <v-scale-transition>
-        <v-btn @click="isShowRegister = !isShowRegister" v-if="!isShowRegister" :block="!isLgScreen($vuetify)" class="my-2">
+      <!-- 底部按钮 -->
+      <v-card-actions :class="loginBottomBtnContainer">
+        <v-scale-transition>
+          <v-btn
+            @click="isShowRegister = !isShowRegister"
+            v-if="!isShowRegister"
+            :block="!isLgScreen($vuetify)"
+            class="my-2"
+          >
+            <v-icon left>mdi-update</v-icon>
+            加入我们
+          </v-btn>
+        </v-scale-transition>
+
+        <v-scale-transition>
+          <div v-if="isShowRegister" class="switch-inline">
+            <span>是否开发组或算法组</span>
+            <v-switch v-model="isLeet" inset class="ml-3"> </v-switch>
+          </div>
+        </v-scale-transition>
+
+        <v-btn
+          :loading="isUpdating"
+          class="my-2 ml-0"
+          color="blue-grey darken-3"
+          :block="!isLgScreen($vuetify)"
+          @click="isUpdating = true"
+        >
           <v-icon left>mdi-update</v-icon>
-          加入我们
+          {{ submitText }}
         </v-btn>
-      </v-scale-transition>
-
-      <v-scale-transition>
-        <div v-if="isShowRegister" class="switch-inline">
-          <span>是否开发组或算法组</span>
-          <v-switch v-model="isLeet" inset class="ml-3"> </v-switch>
-        </div>
-      </v-scale-transition>
-
-      <v-btn :loading="isUpdating" class="my-2 ml-0" color="blue-grey darken-3" :block="!isLgScreen($vuetify)" @click="isUpdating = true">
-        <v-icon left>mdi-update</v-icon>
-        {{ submitText }}
-      </v-btn>
-    </v-card-actions>
-  </v-card>
-</v-container>
+      </v-card-actions>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -52,7 +72,7 @@ export default {
     BackImg: () => import('@/components/login/BackImg.vue'),
     LoginForm: () => import('@/components/login/LoginForm.vue'),
   },
-  data() {
+  data () {
     return {
       account: '',
       password: '',
@@ -62,32 +82,32 @@ export default {
       userName: '小岚',
       title: '欢迎你的加入',
       isShowRegister: false,
-      isLeet: false
+      isLeet: false,
+      formType: null
     }
   },
-
   watch: {
-    isUpdating(val) {
+    isUpdating (val) {
       if (val) {
         setTimeout(() => (this.isUpdating = false), 3000)
       }
     },
     isShowRegister: {
-      handler(n) {
+      handler (n) {
         console.log(n)
       },
       immediate: true
     }
   },
   computed: {
-    loginBottomBtnContainer() {
+    loginBottomBtnContainer () {
       const bool = this.isLgScreen(this.$vuetify)
       return {
         space: bool,
         normal: !bool,
       }
     },
-    submitText() {
+    submitText () {
       //假如教务账密都输入，再根据是否存在该账户显示注册还是登录文字
       return '登录'
     },
@@ -96,15 +116,15 @@ export default {
     })
   },
   methods: {
-    remove(item) {
+    remove (item) {
       const index = this.friends.indexOf(item.name)
       if (index >= 0) this.friends.splice(index, 1)
     },
   },
-  mounted() {
+  mounted () {
     //this.$vuetify.theme.isDark = true
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.$vuetify.theme.isDark = false
   }
 }
