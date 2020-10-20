@@ -1,10 +1,10 @@
-import { setToken, removeToken } from '@/utils/localStorage/token.js';
 import { get_userInfo } from '@/apis/user/information.js';
-import { login, logout } from '@/apis/user/login.js';
 
+/**
+ * 有关登录和登出的模块都归在login内，user只负责用户个人信息和权限的处理
+ */
 export const state = () => ({
   userInfo: {},
-  token: '',
   //此处只保存id，后续根据该id获取所属组
   memberList: [
     {
@@ -80,7 +80,7 @@ export const state = () => ({
       avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
     },
   ],
-  permission: [],
+  permission: null,
 });
 export const mutations = {
   //清除token和userInfo
@@ -104,35 +104,6 @@ export const mutations = {
   },
 };
 export const actions = {
-  /**
-   * 登出
-   */
-  async logout({ commit }) {
-    try {
-      await logout();
-      commit('reset_user_state');
-      removeToken();
-    } catch (error) {
-      console.log(error);
-    }
-  },
-  /**
-   * 登录失败，token过期，手动登出需要清空vuex内user模块的所有state，清空保存在localStorage的token，或清空动态增加的路由
-   */
-  async reset() {},
-  /**
-   * 登录
-   */
-  async login({ commit, state }) {
-    try {
-      const { token } = (await login()).data;
-      commit('set_userInfo', (await get_userInfo({ token })).data);
-    } catch (error) {
-      console.log(error);
-    }
-    commit('set_userInfo', state.userInfo);
-    setToken(state.userInfo.userId, token);
-  },
   /**
    * 获取并更新用户信息
    */

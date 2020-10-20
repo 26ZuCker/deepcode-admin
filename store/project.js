@@ -23,6 +23,10 @@ export const state = () => ({
       icon: 'mdi-image-auto-adjust',
     },
   ],
+  /**
+   * 按组分类的成员，只保存名，头像。id，所属组信息即可
+   */
+  memberByGroup: {},
 });
 export const mutations = {};
 export const actions = {};

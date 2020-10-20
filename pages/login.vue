@@ -92,12 +92,6 @@ export default {
         setTimeout(() => (this.isUpdating = false), 3000)
       }
     },
-    isShowRegister: {
-      handler (n) {
-        console.log(n)
-      },
-      immediate: true
-    }
   },
   computed: {
     loginBottomBtnContainer () {

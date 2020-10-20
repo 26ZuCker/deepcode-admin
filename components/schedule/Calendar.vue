@@ -65,6 +65,13 @@ export default {
     colors: ['blue lighten-3', 'indigo lighten-3', 'deep-purple lighten-3', 'cyan lighten-3', 'green lighten-3', 'orange lighten-3', 'grey darken-1'],
     names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
   }),
+  props: {
+    showTypes: {
+      type: Array, default: function () {
+        return []
+      }
+    }
+  },
   mounted () {
     this.$refs.calendar.checkChange()
   },
