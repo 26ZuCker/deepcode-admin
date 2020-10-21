@@ -77,7 +77,7 @@ import {
   headersData,
   rankData,
   lastWeek
-} from '@/apis/rank.js'
+} from '@/apis/leetcode.js'
 export default {
   inheritAttrs: false,
   name: 'LeetCal',

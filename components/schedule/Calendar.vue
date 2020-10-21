@@ -39,10 +39,13 @@
 </template>
 <script>
 import { formatYMDHM } from '@/utils/dayjs.js';
-
+import { mapGetters, mapState } from 'vuex'
 export default {
   name: 'Calendar',
   data: () => ({
+    current_course_data: [],
+    current_clock_data: [],
+    current_schedule_data: [],
     focus: '',
     type: 'month',
     //左侧边栏显示周次weekLeft或时间条timeLeft，具体周次和月次应该由外部prop传入
@@ -122,10 +125,10 @@ export default {
       for (let i = 0; i < eventCount; i++) {
         const allDay = this.rnd(0, 3) === 0
         const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-        const first = new Date(firstTimestamp - (firstTimestamp % 900000))
+        const first = (new Date(firstTimestamp - (firstTimestamp % 900000)))
         const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
         const second = new Date(first.getTime() + secondTimestamp)
-
+        console.log(first.toString())
         events.push({
           name: this.names[this.rnd(0, this.names.length - 1)],
           start: first,
@@ -135,8 +138,24 @@ export default {
           index: i
         })
       }
-
-      this.events = events
+      this.events = [
+        {
+          name: 'Weekly Meeting',
+          start: '2020-10-20 09:00',
+          end: '2020-10-20 10:00',
+        },
+        {
+          name: 'Thomas\' Birthday',
+          start: '2020-10-20 12:30',
+          end: '2020-10-20 15:30',
+        },
+        {
+          name: 'Mash Potatoes',
+          start: '2020-10-20 12:30',
+          end: '2020-10-20 15:30',
+        },
+      ]
+      //this.events = events
       console.log(events)
     },
     rnd (a, b) {
@@ -168,6 +187,11 @@ export default {
         (this.leftBarMode === 'timeline') && (this.currentMonth = n)
       }, immediate: true
     }
+  },
+  created () {
+    this.current_course_data = Object.freeze()
+    this.current_clock_data = Object.freeze()
+    this.current_schedule_data = Object.freeze()
   },
   mounted () {
     [, this.currentMonth, this.currentDate] = formatYMDHM().split('/')

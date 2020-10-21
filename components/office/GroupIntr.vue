@@ -38,17 +38,17 @@
                   {{ i.name }}
                 </div>
               </v-card-title>
-              <v-card-text :class="groupCardText">{{ i.des }}</v-card-text>
-              <v-sheet width="36" height="36" class="groupCardBottom ma-0">
-                <span v-if="!hover" class="subtitle-2" style="width: 100%">{{
-                  i.des
-                }}</span>
-                <v-scroll-y-transition>
-                  <v-btn v-if="hover" icon>
-                    <v-icon>mdi-arrow-right-bold-circle-outline</v-icon>
-                  </v-btn>
-                </v-scroll-y-transition>
-              </v-sheet>
+
+              <v-card-text :class="groupCardText">
+                {{ i.des }}
+                <v-sheet width="36" height="36" class="groupCardBottom ma-0">
+                  <v-scroll-y-transition>
+                    <v-btn v-show="hover" icon>
+                      <v-icon>mdi-arrow-right-bold-circle-outline</v-icon>
+                    </v-btn>
+                  </v-scroll-y-transition>
+                </v-sheet>
+              </v-card-text>
             </v-card>
           </template>
         </v-hover>
@@ -97,6 +97,7 @@ export default {
     groupCardText () {
       return {
         'text-center': !this.isLgScreen(this.$vuetify),
+        'align-center': true
       }
     },
     ...mapState({

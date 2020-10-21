@@ -36,6 +36,7 @@
     <v-btn icon v-if="$route.name !== 'user-userId'" @click="routerBack">
       <v-icon>mdi-arrow-left-thick</v-icon>
     </v-btn>
+
     <v-toolbar-title>{{ currentRouteTitle($route.name) }}</v-toolbar-title>
 
     <v-spacer></v-spacer>
@@ -64,6 +65,7 @@
     >
       <v-icon>mdi-arrow-expand-left</v-icon>
     </v-btn>
+
     <!-- 登录 -->
     <v-btn
       color="green"

@@ -1,3 +1,5 @@
+import transitionList from '@/utils/transitionList.js';
+
 //传值给顶部条当前路由中文名称，同时需要在LeftBar组件内更改中文的title
 //假如需要动态设置名称则判断是否存在，否则直接返回null然后在具体组件内调整
 const routeTitleMap = {
@@ -62,4 +64,5 @@ export const getters = {
   //需要整个页面的背景都改为深色的route.name
   isDarkBackGround: () => (name) => darkBackGroundRoutes.includes(name),
   isFloatBtnRoutes: () => (name) => floatBtnRoutes.includes(name),
+  transitionList: () => transitionList,
 };

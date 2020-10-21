@@ -9,7 +9,7 @@
         dense
         shaped
         mandatory
-        active-class="blue white--text"
+        active-class="black white--text"
       >
         <v-btn v-for="value in showTypes" :key="value">
           {{ value }}
@@ -41,17 +41,21 @@
             v-on="on"
             v-bind="attrs"
             text
+            rounded
             width="180"
-            active-class="black white--text"
-            class="d-flex justify-space-around text-h6"
+            class="d-flex justify-space-around white--text black"
           >
-            <v-avatar left>
+            <v-avatar left size="30">
               <v-img :src="current_member_list[0].avatar"></v-img>
             </v-avatar>
             {{ current_member_list[0].name }}
           </v-btn>
         </template>
-        <v-list>
+        <v-list max-height="300" class="overflow-y-auto">
+          <v-list-item-title
+            class="d-flex justify-center align-center pr-2 font-weight-bold"
+            >{{ current_member_list.length }} 人</v-list-item-title
+          >
           <v-list-item
             v-for="item in current_member_list"
             :key="item.name"

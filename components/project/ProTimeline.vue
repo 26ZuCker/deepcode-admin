@@ -1,22 +1,25 @@
 <template>
-  <v-timeline align-top :dense="!isLgScreen($vuetify)">
-    <v-timeline-item
-      v-for="(item, i) in partList"
-      :key="i"
-      :color="item.color"
-      :icon="item.icon"
-      fill-dot
-    >
-      <part-card :item="item"></part-card>
-    </v-timeline-item>
-    <v-timeline-item large fill-dot light color="white">
-      <template v-slot:icon>
-        <v-btn fab color="primary" @click="addPart">
-          <v-icon>mdi-plus</v-icon>
-        </v-btn>
-      </template>
-    </v-timeline-item>
-  </v-timeline>
+  <div>
+    <v-card-title>我的模块</v-card-title>
+    <v-timeline align-top :dense="!isLgScreen($vuetify)">
+      <v-timeline-item
+        v-for="(item, i) in partList"
+        :key="i"
+        :color="item.color"
+        :icon="item.icon"
+        fill-dot
+      >
+        <part-card :item="item"></part-card>
+      </v-timeline-item>
+      <v-timeline-item large fill-dot light color="white">
+        <template v-slot:icon>
+          <v-btn fab color="primary" @click="addPart">
+            <v-icon>mdi-plus</v-icon>
+          </v-btn>
+        </template>
+      </v-timeline-item>
+    </v-timeline>
+  </div>
 </template>
 
 <script>

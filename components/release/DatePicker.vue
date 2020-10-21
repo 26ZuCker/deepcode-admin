@@ -1,21 +1,13 @@
 <template>
-<v-sheet class="date-picker-container">
-  <v-menu ref="menu" offset-y v-model="menu" :close-on-content-click="false" :return-value.sync="selectDates" transition="slide-y-transition" min-width="290px">
-    <template v-slot:activator="{ on, attrs }">
-      <v-text-field readonly v-bind="attrs" v-on="on" v-model="dateRangeText" prepend-icon="mdi-calendar">
-        <template v-slot:prepend>始末日期</template>
-        <template v-slot:label> 始末日期 </template>
-      </v-text-field>
-    </template>
-    <v-date-picker v-model="selectDates" no-title scrollable range>
+  <v-sheet class="date-picker-container">
+    <v-date-picker v-model="selectDates" no-title scrollable :range="isRange">
       <v-spacer></v-spacer>
       <v-btn text color="primary" @click="menu = false"> Cancel </v-btn>
       <v-btn text color="primary" @click="$refs.menu.save(selectDates)">
         OK
       </v-btn>
     </v-date-picker>
-  </v-menu>
-</v-sheet>
+  </v-sheet>
 </template>
 
 <script>
@@ -49,30 +41,31 @@ export default {
     pickerTitle: {
       type: String,
       default: '结束日期'
-    }
+    },
+    isRange: { type: Boolean, default: false }
   },
   methods: {},
   computed: {
-    pickerTitleContainer() {
+    pickerTitleContainer () {
       return {}
     },
-    dateRangeText() {
+    dateRangeText () {
       return this.selectDates.join(' ~ ')
     },
-    datePickerContainer() {
+    datePickerContainer () {
       return {}
     },
-    currentDate() {
+    currentDate () {
       return formatYMDHM().split('/').slice(0, 3).join('-')
     },
-    hours() {
+    hours () {
       const res = []
       for (let i = 0; i <= 24; i++) {
         res.push(i)
       }
       return res
     },
-    seconds() {
+    seconds () {
       const res = []
       for (let i = 0; i <= 60; i++) {
         res.push(i)
@@ -83,7 +76,7 @@ export default {
       isLgScreen: 'showCom/isLgScreen'
     })
   },
-  mounted() {
+  mounted () {
     this.selectDate = this.currentDate
   }
 }

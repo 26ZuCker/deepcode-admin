@@ -34,8 +34,7 @@
             :block="!isLgScreen($vuetify)"
             class="my-2"
           >
-            <v-icon left>mdi-update</v-icon>
-            加入我们
+            新成员
           </v-btn>
         </v-scale-transition>
 
@@ -53,7 +52,6 @@
           :block="!isLgScreen($vuetify)"
           @click="isUpdating = true"
         >
-          <v-icon left>mdi-update</v-icon>
           {{ submitText }}
         </v-btn>
       </v-card-actions>
