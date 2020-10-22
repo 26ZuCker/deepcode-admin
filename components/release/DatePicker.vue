@@ -1,11 +1,12 @@
 <template>
-  <v-sheet class="date-picker-container">
+  <v-sheet :class="timeFormContainer">
     <!-- 左侧日期选择 -->
     <v-date-picker v-model="pickerData" no-title scrollable :range="isRange">
     </v-date-picker>
     <!-- 右侧具体输入框 -->
-    <div v-if="hasTime" :class="timeFormContainer">
+    <div v-if="hasTime">
       <v-text-field
+        rounded
         outlined
         readonly
         label="开始日期"
@@ -13,6 +14,7 @@
         class="ma-2"
       ></v-text-field>
       <v-text-field
+        rounded
         outlined
         readonly
         label="结束日期"
@@ -22,6 +24,8 @@
       <template v-if="hasTime">
         <!-- 时 -->
         <v-select
+          solo
+          rounded
           v-model="begin_time_hour"
           :items="hours"
           menu-props="auto"
@@ -31,6 +35,8 @@
         ></v-select>
         <!-- 分 -->
         <v-select
+          solo
+          rounded
           v-model="begin_time_minute"
           :items="minutes"
           menu-props="auto"
@@ -39,6 +45,8 @@
           single-line
         ></v-select>
         <v-select
+          solo
+          rounded
           v-model="end_time_hour"
           :items="hours"
           menu-props="auto"
@@ -47,6 +55,8 @@
           single-line
         ></v-select>
         <v-select
+          solo
+          rounded
           v-model="end_time_minute"
           :items="minutes"
           menu-props="auto"
@@ -105,7 +115,7 @@ export default {
     timeFormContainer () {
       const bool = this.isLgScreen(this.$vuetify)
       return {
-        smallS: !bool, lgS: bool
+        'smallS': !bool, 'lgS': bool
       }
     },
     pickerData () {
@@ -147,7 +157,7 @@ export default {
       isLgScreen: 'showCom/isLgScreen'
     })
   },
-  mounted () {
+  created () {
     this.selectDate = this.currentDate
   }
 }

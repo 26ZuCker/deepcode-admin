@@ -28,11 +28,15 @@
       <v-text-field
         outlined
         readonly
+        rounded
         label="标题"
         :value="title"
         class="ma-2"
       ></v-text-field>
       <date-picker :hasTime="true"></date-picker>
+      <!-- 是否设为公告 -->
+      <div></div>
+      <!-- 是否置顶通知 -->
     </v-card>
   </v-dialog>
 </template>

@@ -1,7 +1,7 @@
 import http, { decorRequest } from '@/plugins/axios/http.js';
 
 const proApiMap = {
-  project_initialization: { url: '/project_initialization', method: 'POST' },
+  project_create: { url: '/project_create', method: 'POST' },
   get_pro: { url: '', method: 'POST' },
   delete_pro: { url: '', method: 'POST' },
   delete_my_part: { url: '', method: 'POST' },
@@ -14,10 +14,7 @@ const proPart = {
   partMember: [],
 };
 
-const project_initialization = decorRequest(
-  http,
-  proApiMap['project_initialization']
-);
+const project_create = decorRequest(http, proApiMap['project_create']);
 /**
  * 获取单个项目，建议首屏只获取一个项目，然后默认获取该用户所有项目，再逐一后台请求
 {
@@ -103,7 +100,7 @@ const part_template = {
 };
 
 export {
-  project_initialization,
+  project_create,
   get_pro,
   delete_pro,
   delete_my_part,
