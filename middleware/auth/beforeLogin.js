@@ -6,7 +6,7 @@
  */
 const beforeLogin = ({ store, redirect }) => {
   if (store.getters['user/isLogin']) {
-    return redirect('/user');
+    return redirect('/user-userId');
   } else {
     return redirect('/office');
   }

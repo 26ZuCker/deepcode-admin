@@ -43,9 +43,6 @@ import {
   mapState,
   mapGetters
 } from 'vuex'
-import {
-  proPart
-} from '@/apis/project.js'
 export default {
   inheritAttrs: false,
   name: '',

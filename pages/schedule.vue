@@ -26,7 +26,6 @@ export default {
   components: {
     Calendar: () => import('@/components/schedule/Calendar.vue'),
     CalHeader: () => import('@/components/schedule/CalHeader.vue'),
-    AddSchDialog: () => import('@/components/schedule/AddSchDialog.vue'),
     OpenFabBtn: () => import('@/components/OpenFabBtn.vue')
   },
   methods: {

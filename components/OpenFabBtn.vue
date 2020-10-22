@@ -28,9 +28,7 @@
       <v-icon>mdi-pencil</v-icon>
     </v-btn>
 
-    <slot v-if="$route.name === 'schedule'"></slot>
-
-    <v-btn fab dark small color="green" v-else>
+    <v-btn fab dark small color="green" @click="toAdd">
       <v-icon>mdi-calendar-plus</v-icon>
     </v-btn>
   </v-speed-dial>
@@ -59,6 +57,10 @@ export default {
       else {
         this.isShowDialog = true
       }
+    },
+    toAdd () {
+      const releaseType = this.$route.name === 'schedule' ? 'schedule' : 'project'
+      this.$router.push(`/release/releaseType=${releaseType}`)
     }
   }
 }

@@ -1,11 +1,13 @@
 <template>
-  <!-- 从mission页面进入的发布任务页面 -->
-  <form-card :releaseType="releaseType">
-    <!-- 用于发布项目 -->
-    <add-pro v-if="releaseType === 'project'"></add-pro>
-    <!-- 用于添加日程 -->
-    <add-sch v-else-if="releaseType === 'schedule'"></add-sch>
-  </form-card>
+  <v-scale-transition>
+    <!-- 从mission页面进入的发布任务页面 -->
+    <form-card :releaseType="releaseType">
+      <!-- 用于发布项目 -->
+      <add-pro v-if="releaseType === 'project'"></add-pro>
+      <!-- 用于添加日程 -->
+      <add-sch v-else-if="releaseType === 'schedule'"></add-sch>
+    </form-card>
+  </v-scale-transition>
 </template>
 
 <script>
