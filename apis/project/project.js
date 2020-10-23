@@ -1,8 +1,8 @@
 import http, { decorRequest } from '@/plugins/axios/http.js';
 
 const proApiMap = {
-  project_create: { url: '/project_create', method: 'POST' },
-  get_pro: { url: '', method: 'POST' },
+  create_project: { url: '/create_project', method: 'POST' },
+  get_project_all_data: { url: '', method: 'POST' },
   delete_pro: { url: '', method: 'POST' },
   delete_my_part: { url: '', method: 'POST' },
   change_pro: { url: '', method: 'POST' },
@@ -13,45 +13,19 @@ const proPart = {
   partTitle: '',
   partMember: [],
 };
-
-const project_create = decorRequest(http, proApiMap['project_create']);
+/**
+ * 创建单个项目
+ */
+const create_project = decorRequest(http, proApiMap['create_project']);
 /**
  * 获取单个项目，建议首屏只获取一个项目，然后默认获取该用户所有项目，再逐一后台请求
-{
-  pro_id,
-  pro_name,
-  pro_des,
-  pub_name,
-  pro_complete,
-  pro_begin_date,
-  pro_e_end_date,
-  pro_a_end_date,
-  parts: [
-    {
-      part_user_id,
-      part_user_name,
-      part_des,
-      part_complete,
-      part_begin_date,
-      part_end_date,
-      my_parts: [
-        {
-          my_part_id,
-          my_part_name,
-          my_part_des,
-          my_part_complete,
-        },
-      ],
-    },
-  ],
-}
  */
-const get_pro = decorRequest(http, proApiMap['get_pro']);
+const get_project_all_data = decorRequest(
+  http,
+  proApiMap['get_project_all_data']
+);
 /**
  * 删除单个项目
-{
-  pro_id,
-}
  */
 const delete_pro = decorRequest(http, proApiMap['delete_pro']);
 /**
@@ -63,31 +37,10 @@ const delete_pro = decorRequest(http, proApiMap['delete_pro']);
 const delete_my_part = decorRequest(http, proApiMap['delete_my_part']);
 /**
  * 发布者修改整个项目，除pub_id外任发其一亦可
-{
-  pro_name,
-  pro_des,
-  pub_id,
-  pro_parts: [
-    {
-      pro_part_name: '',
-      pro_part_user_id: '',
-    },
-    {
-      pro_part_name: '',
-      pro_part_user_id: '',
-    },
-  ],
-}
  */
 const change_pro = decorRequest(http, proApiMap['change_pro']);
 /**
  * 修改个人部分，除my_part_id外任发其一即可
-{
-  my_part_id,
-  my_part_name,
-  my_part_des,
-  my_part_complete,
-}
  */
 const change_my_part = decorRequest(http, proApiMap['change_my_part']);
 
@@ -100,8 +53,8 @@ const part_template = {
 };
 
 export {
-  project_create,
-  get_pro,
+  create_project,
+  get_project_all_data,
   delete_pro,
   delete_my_part,
   change_pro,
