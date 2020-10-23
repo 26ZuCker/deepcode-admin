@@ -1,5 +1,11 @@
 import colors from 'vuetify/es5/util/colors';
 
+const isProd = process.env.NODE_ENV === 'production';
+
+import commonConfig from '@/configs/common.js';
+import devConfig from '@/configs/dev.js';
+import prodConfig from '@/configs/prod.js';
+
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -60,6 +66,6 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-    analyze: true,
+    analyze: isProd,
   },
 };

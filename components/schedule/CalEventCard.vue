@@ -6,7 +6,7 @@
     :activator="selectedElement"
     offset-x
   >
-    <v-card color="grey lighten-4" min-width="200px" flat>
+    <v-card color="grey lighten-4" min-width="200px" flat elevation="0">
       <v-toolbar :color="selectedEvent.color" dark>
         <v-btn icon>
           <v-icon>mdi-pencil</v-icon>

@@ -1,5 +1,5 @@
 <template>
-  <v-card :color="item.color">
+  <v-card :color="item.color" elevation="0">
     <v-card-title class="title">{{ item.title }}</v-card-title>
 
     <v-card-text class="white text--primary py-0">

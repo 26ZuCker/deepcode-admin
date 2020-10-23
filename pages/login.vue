@@ -1,6 +1,6 @@
 <template>
   <v-container class="flex justify-center pb-10" fill-height>
-    <v-card dark color="blue-grey darken-1" elevation="14">
+    <v-card dark color="blue-grey darken-1" elevation="0">
       <!-- 顶部loading条，点击提交后的等待 -->
       <template v-slot:progress>
         <v-progress-linear

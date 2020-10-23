@@ -1,6 +1,6 @@
 <template>
   <!-- 具备发布任务权限者发布任务，发布者删除当前任务 -->
-  <v-card>
+  <v-card elevation="0">
     <v-card-text class="pro-header-title blue-grey darken-1">
       <span class="text-h4 white--text">管理系统</span>
       <v-menu transition="slide-y-transition" bottom>

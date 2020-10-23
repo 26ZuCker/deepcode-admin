@@ -29,7 +29,12 @@
       <v-col v-for="i in groupTypes" :key="i.name" cols="5">
         <v-hover>
           <template v-slot:default="{ hover }">
-            <v-card max-width="300" max-height="500" :dark="hover">
+            <v-card
+              max-width="300"
+              max-height="500"
+              :dark="hover"
+              elevation="0"
+            >
               <v-card-title :class="groupCardContainer">
                 <v-icon size="30" :color="hover ? 'white' : 'blue darken-1'">{{
                   i.icon

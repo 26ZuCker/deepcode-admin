@@ -14,7 +14,7 @@
           </template>
 
           <!-- 点击显示内容登录信息 -->
-          <v-card>
+          <v-card elevation="0">
             <v-list>
               <v-list-item>
                 <v-list-item-avatar>

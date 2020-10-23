@@ -1,6 +1,6 @@
 <template>
   <v-card
-    elevation="14"
+    elevation="0"
     :class="introContainerClass"
     max-width="1000"
     color="blue-grey darken-1"
@@ -44,6 +44,7 @@ export default {
         'ma-auto': true,
         'lgS': bool,
         'smallS': !bool,
+        'border-grey': true
       }
     },
     ...mapGetters({
@@ -55,6 +56,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import url('@/static/scss/border-grey.scss');
 .smallS {
   display: flex;
   flex-direction: column;

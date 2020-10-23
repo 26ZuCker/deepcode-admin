@@ -1,0 +1,18 @@
+@mixin flex-align-center($direction:row,$justify-content:center) {
+  display: flex;
+  align-items: center;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+}
+.jcc{
+  @include flex-align-center(column);
+}
+.jca{
+  @include flex-align-center(column,space-around);
+}
+.jrc{
+  @include flex-align-center(row,center);
+}
+.jra{
+  @include flex-align-center(row,space-around);
+}

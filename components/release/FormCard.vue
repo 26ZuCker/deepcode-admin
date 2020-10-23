@@ -2,7 +2,7 @@
   <!-- 从mission页面进入的发布任务页面 -->
 
   <v-container class="align-center blue-grey lighten-2">
-    <v-card elevation="14" class="rounded-xl" max-height="1200">
+    <v-card elevation="0" class="rounded-xl" max-height="1200">
       <v-toolbar flat dark>
         <v-toolbar-title>{{
           releaseType === 'project'

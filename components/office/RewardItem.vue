@@ -1,6 +1,6 @@
 <template>
   <v-hover v-slot:default="{ hover }">
-    <v-card color="grey lighten-4" height="100%">
+    <v-card color="grey lighten-4" height="100%" elevation="0">
       <v-img
         src="https://cdn.vuetifyjs.com/images/cards/kitchen.png"
         max-width="100"
