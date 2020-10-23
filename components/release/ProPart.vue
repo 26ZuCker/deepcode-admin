@@ -83,7 +83,7 @@ import {
 } from 'vuex'
 import {
   proPart
-} from '@/apis/project.js'
+} from '@/apis/project/project.js'
 export default {
   inheritAttrs: false,
   name: '',

@@ -1,5 +1,5 @@
 /**
- * 项目
+ * 项目接收
  */
 interface project {
   name: string;

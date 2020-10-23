@@ -1,4 +1,4 @@
-import { part_template } from '@/apis/project';
+import { part_template } from '@/apis/project/project';
 
 /**
  * state内保存在做项目即可因为一个人同时在做的项目不会很多且保存在vuex内不用再发送http请求获取
