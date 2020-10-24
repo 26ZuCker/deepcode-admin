@@ -17,15 +17,20 @@ const routeTitleMap = {
  * 我的：
  */
 const routerItems = [
-  { id: 1, title: '我的', icon: 'mdi-account-tie', url: '/user' },
-  { id: 2, title: '任务', icon: 'mdi-file-tree', url: '/project' },
+  { name: 'user-userId', title: '我的', icon: 'mdi-account-tie', url: '/user' },
+  { name: 'project', title: '项目', icon: 'mdi-file-tree', url: '/project' },
   {
-    id: 3,
-    title: '日程表',
+    name: 'schedule',
+    title: '日程',
     icon: 'mdi-calendar-multiselect',
     url: '/schedule',
   },
-  { id: 4, title: '工作室', icon: 'mdi-account-group-outline', url: '/office' },
+  {
+    name: 'office',
+    title: '工作室',
+    icon: 'mdi-account-group-outline',
+    url: '/office',
+  },
 ];
 
 const darkBackGroundRoutes = ['login', 'release-releaseType'];

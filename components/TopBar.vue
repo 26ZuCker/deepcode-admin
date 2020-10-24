@@ -9,9 +9,9 @@
 -->
 <template>
   <v-app-bar
-    dark
+    light
     dense
-    :collapse="!isShowFullTopBar"
+    shrink-on-scroll
     fixed
     rounded="rounded-br-xl"
     clipped-left
@@ -22,10 +22,6 @@
       <v-avatar v-if="isLogin">
         <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
       </v-avatar>
-      <!-- 大屏，伸张，未登录 -->
-      <v-btn icon v-if="isShowFullTopBar && !isLogin && isLgScreen($vuetify)">
-        <v-icon>mdi-arrow-expand-left</v-icon>
-      </v-btn>
     </v-app-bar-nav-icon>
 
     <!-- <v-btn icon>
@@ -42,15 +38,18 @@
     <v-spacer></v-spacer>
     <!-- 页面切换，注意后期需要修改显示的logo -->
     <template v-if="isLgScreen($vuetify)">
-      <v-tooltip bottom v-for="i in routerItems" :key="i.id">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn icon @click="$router.push(i.url)" v-bind="attrs" v-on="on">
-            <v-icon>{{ i.icon }}</v-icon>
-          </v-btn>
-        </template>
+      <v-btn
+        icon
+        @click="$router.push(i.url)"
+        v-for="i in routerItems"
+        :key="i.name"
+        text
+        :class="current_tab_container(i.name)"
+      >
         <span>{{ i.title }}</span>
-      </v-tooltip>
+      </v-btn>
     </template>
+
     <!-- 通知，大屏点击显示弹出menu，小屏则底部弹出drawer -->
     <v-badge red color="error" content="6" overlap offset-y="20" v-if="isLogin">
       <v-btn icon>
@@ -73,6 +72,7 @@
       @click="$router.push('/login')"
       rounded
       :small="!isShowFullTopBar"
+      class="mt-2"
       >登录</v-btn
     >
   </v-app-bar>
@@ -97,6 +97,19 @@ export default {
       } else {
         return true
       }
+    },
+    current_tab_container () {
+      return function (title) {
+        console.log(title)
+        console.log(this.$route.name)
+        const bool = title === this.$route.name
+        console.log(bool)
+        return {
+          'mx-2': true,
+          'border-bottom-black': bool
+        }
+      }
+
     },
     ...mapState({
       isShowFullTopBar: (state) => state.showCom.isShowFullTopBar,
@@ -141,4 +154,14 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import url('@/static/scss/flex.scss');
+.jcc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.border-bottom-black {
+  border-bottom: 3px solid black;
+}
 </style>

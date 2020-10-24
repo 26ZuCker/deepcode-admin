@@ -8,21 +8,13 @@
 
     <keep-alive>
       <!-- 通知列表 -->
-      <pro-not-list
-        v-if="currentTabs === 'NotList'"
-        listType="NotList"
-        key="NotList"
-      ></pro-not-list>
+      <not-list v-if="currentTabs === 'NotList'"></not-list>
 
       <!-- LeetCode刷题榜 -->
       <leet-cal v-if="currentTabs === 'LeetCal'"></leet-cal>
 
       <!-- 项目列表 -->
-      <pro-not-list
-        v-if="currentTabs === 'ProList'"
-        listType="ProList"
-        key="ProList"
-      ></pro-not-list>
+      <pro-list v-if="currentTabs === 'ProList'"></pro-list>
     </keep-alive>
   </v-container>
 </template>
@@ -36,7 +28,8 @@ export default {
   components: {
     UserCard: () => import('@/components/user/UserCard.vue'),
     UserTabs: () => import('@/components/user/UserTabs.vue'),
-    ProNotList: () => import('@/components/user/ProNotList.vue'),
+    ProList: () => import('@/components/user/ProList.vue'),
+    NotList: () => import('@/components/user/NotList.vue'),
   },
   data: () => ({
     selection: [''],

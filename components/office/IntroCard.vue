@@ -10,15 +10,13 @@
       <v-divider class="white"></v-divider>
 
       <v-card-subtitle>
-        <span class="border-w pr-3">{{ introductionL }}</span>
-        <span class="pl-3">{{ introductionR }}</span>
+        <span class="border-w pr-3 white--text">{{ introductionL }}</span>
+        <span class="pl-3 white--text">{{ introductionR }}</span>
       </v-card-subtitle>
     </div>
     <!-- logo标题悬停展示按钮加入我们 -->
     <div>
-      <v-avatar size="120" color="blue-grey darken-2" class="ma-2"
-        >DEEPCODE</v-avatar
-      >
+      <v-avatar size="120" color="white" class="ma-2">DEEPCODE</v-avatar>
     </div>
   </v-card>
 </template>

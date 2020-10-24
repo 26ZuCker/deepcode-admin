@@ -27,36 +27,18 @@
     <!-- 组分类：前端，后端，算法，策划 -->
     <v-row justify="center" style="width=70%">
       <v-col v-for="i in groupTypes" :key="i.name" cols="5">
-        <v-hover>
-          <template v-slot:default="{ hover }">
-            <v-card
-              max-width="300"
-              max-height="500"
-              :dark="hover"
-              elevation="0"
-            >
-              <v-card-title :class="groupCardContainer">
-                <v-icon size="30" :color="hover ? 'white' : 'blue darken-1'">{{
-                  i.icon
-                }}</v-icon>
-                <div :class="hoverText(hover)">
-                  {{ i.name }}
-                </div>
-              </v-card-title>
+        <v-card max-width="300" max-height="500" elevation="0" class="ma-3">
+          <v-card-title :class="groupCardContainer">
+            <v-icon size="30">{{ i.icon }}</v-icon>
+            <div>
+              {{ i.name }}
+            </div>
+          </v-card-title>
 
-              <v-card-text :class="groupCardText">
-                {{ i.des }}
-                <v-sheet width="36" height="36" class="groupCardBottom ma-0">
-                  <v-scroll-y-transition>
-                    <v-btn v-show="hover" icon>
-                      <v-icon>mdi-arrow-right-bold-circle-outline</v-icon>
-                    </v-btn>
-                  </v-scroll-y-transition>
-                </v-sheet>
-              </v-card-text>
-            </v-card>
-          </template>
-        </v-hover>
+          <v-card-text :class="groupCardText">
+            {{ i.des }}
+          </v-card-text>
+        </v-card>
       </v-col>
     </v-row>
   </v-sheet>
