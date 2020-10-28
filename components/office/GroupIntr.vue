@@ -27,7 +27,12 @@
     <!-- 组分类：前端，后端，算法，策划 -->
     <v-row justify="center" style="width=70%">
       <v-col v-for="i in groupTypes" :key="i.name" cols="5">
-        <v-card max-width="300" max-height="500" elevation="0" class="ma-3">
+        <v-card
+          max-width="300"
+          max-height="500"
+          elevation="0"
+          class="ma-3 border-grey"
+        >
           <v-card-title :class="groupCardContainer">
             <v-icon size="30">{{ i.icon }}</v-icon>
             <div>
@@ -74,6 +79,7 @@ export default {
         'lgS': bool,
         'smallS': !bool,
         'pb-5': !bool,
+        'py-5': !0
       }
     },
     groupCardContainer () {
@@ -100,6 +106,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('@/static/scss/border-grey.scss');
 .group-title-container {
   display: flex;
   flex-direction: column;
