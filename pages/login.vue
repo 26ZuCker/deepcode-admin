@@ -65,6 +65,9 @@ import {
 } from 'vuex'
 
 export default {
+  middleware ({ store, redirect }) {
+    return store.user.getters.isLogin ? redirect('/office') : true
+  },
   name: 'login',
   components: {
     BackImg: () => import('@/components/login/BackImg.vue'),

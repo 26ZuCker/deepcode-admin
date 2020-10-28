@@ -21,8 +21,10 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import auth from '@/middleware/auth/auth.js'
 
 export default {
+  middleware: auth(-1),
   name: 'user-userId',
   inheritAttrs: false,
   components: {

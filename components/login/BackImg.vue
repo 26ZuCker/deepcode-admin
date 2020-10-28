@@ -43,12 +43,12 @@
       <v-row class="pa-4" align="center" justify="center">
         <v-col class="text-center">
           <h3 class="headline">{{ officeName }}</h3>
-          <template v-if="true">
+          <!-- <template v-if="true">
             <v-avatar size="70">
               <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
             </v-avatar>
             <h4>{{ userName }}</h4>
-          </template>
+          </template> -->
         </v-col>
       </v-row>
     </v-row>

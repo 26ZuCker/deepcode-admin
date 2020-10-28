@@ -5,7 +5,7 @@ import {
   login,
   logout,
 } from '../apis/user/login';
-import { setToken, removeToken } from '@/utils/localStorage/token.js';
+import { setToken, removeToken } from '@/utils/localStorage';
 /**
  * 由于目前存在login，register，recruit，release多种提交表单界面且多个组件之间需要交互
  * 所以采用vuex内统一表单数据管理为佳，但此处只负责保存表单数据而不负责发送http请求即解耦于api

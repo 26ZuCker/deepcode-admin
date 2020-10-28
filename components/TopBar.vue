@@ -8,14 +8,7 @@
   登录与否
 -->
 <template>
-  <v-app-bar
-    light
-    dense
-    shrink-on-scroll
-    fixed
-    rounded="rounded-br-xl"
-    clipped-left
-  >
+  <v-app-bar light dense fixed rounded="rounded-br-xl" clipped-left>
     <!-- 左侧 -->
     <v-app-bar-nav-icon @click.stop="showBar">
       <!-- 如果大屏幕则直接把头像显示在左侧边栏顶即可 -->
@@ -29,12 +22,12 @@
     </v-btn>-->
 
     <!-- 根据是否是非首页进行回退按钮的选择 -->
-    <v-btn icon v-if="$route.name !== 'user-userId'" @click="routerBack">
+    <!--     <v-btn icon v-if="$route.name !== 'user-userId'" @click="routerBack">
       <v-icon>mdi-arrow-left-thick</v-icon>
-    </v-btn>
+    </v-btn> -->
 
-    <v-toolbar-title>{{ currentRouteTitle($route.name) }}</v-toolbar-title>
-
+    <!--     <v-toolbar-title>{{ currentRouteTitle($route.name) }}</v-toolbar-title>
+ -->
     <v-spacer></v-spacer>
     <!-- 页面切换，注意后期需要修改显示的logo -->
     <template v-if="isLgScreen($vuetify)">
@@ -57,13 +50,13 @@
       </v-btn>
     </v-badge>
     <!-- 伸展，小屏 -->
-    <v-btn
+    <!--     <v-btn
       icon
       @click="set_isShowFullTopBar"
       v-if="isShowFullTopBar && !isLgScreen($vuetify)"
     >
       <v-icon>mdi-arrow-expand-left</v-icon>
-    </v-btn>
+    </v-btn> -->
 
     <!-- 登录 -->
     <v-btn
@@ -124,20 +117,21 @@ export default {
   methods: {
     //点击顶部栏最左侧按钮
     showBar () {
-      if (this.isShowFullTopBar && !this.isLogin && this.isLgScreen(this.$vuetify)) {
-        this.set_isShowFullTopBar()
-      } else {
-        //第一次先展开
-        if (!this.isShowFullTopBar) {
-          if (this.isLgScreen) {
-            this.set_isShowFullTopBar()
-          }
-        }
-        //展开后再点且在移动端才展示左侧边栏，注意由于左侧边栏覆盖顶部栏所以该按钮只需要调整为true即可
-        else {
-          this.$emit('onShowLeftBar')
-        }
-      }
+      /*       if (this.isShowFullTopBar && !this.isLogin && this.isLgScreen(this.$vuetify)) {
+              this.set_isShowFullTopBar()
+            } else {
+              //第一次先展开
+              if (!this.isShowFullTopBar) {
+                if (this.isLgScreen) {
+                  this.set_isShowFullTopBar()
+                }
+              }
+              //展开后再点且在移动端才展示左侧边栏，注意由于左侧边栏覆盖顶部栏所以该按钮只需要调整为true即可
+              else {
+                this.$emit('onShowLeftBar')
+              }
+            } */
+      this.$emit('onShowLeftBar')
 
     },
     //无法直接在html内使用$router.back且注意不能直接返回error页面

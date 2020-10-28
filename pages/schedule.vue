@@ -15,7 +15,10 @@
 </template>
 
 <script>
+import auth from '@/middleware/auth/auth.js'
+
 export default {
+  middleware: auth(-1),
   inheritAttrs: false,
   name: 'schedule',
   data () {

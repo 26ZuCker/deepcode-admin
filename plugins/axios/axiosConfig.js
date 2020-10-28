@@ -1,6 +1,9 @@
+/**
+ * axios配置项
+ */
 const axiosConfig = {
   //根据不同环境设置不同的url前缀，nuxt置于nuxt.config内的env
-  baseURL: process.env.VUE_APP_BASEURL_API,
+  baseURL: process.env.VUE_APP_BASE_URL,
   //跨域时发送cookies
   withCredentials: true,
   timeout: 5000,
@@ -14,4 +17,20 @@ const axiosConfig = {
   maxContentLength: 2000,
 };
 
-export default axiosConfig;
+/**
+ * 自定义响应码，非默认状态码
+ */
+const codeMap = {
+  ERRORCODE: -1,
+};
+
+/**
+ * 不同环境下的api请求前缀
+ */
+const BASE_URL = {
+  production: '',
+  development: '',
+  test: '',
+};
+
+export { axiosConfig, codeMap, BASE_URL };

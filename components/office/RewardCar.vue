@@ -4,8 +4,7 @@
       <v-hover class="border-grey">
         <template v-slot:default="{ hover }">
           <!-- 每张奖项卡片悬停展示获奖日期 -->
-          <v-card class="ma-5" elevation="0">
-            <v-card-title>hh</v-card-title>
+          <v-card class="ma-5 elevation-0">
             <v-img
               src="https://cdn.vuetifyjs.com/images/cards/kitchen.png"
               :max-width="isLgScreen($vuetify) ? 300 : 210"

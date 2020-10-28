@@ -1,4 +1,4 @@
-import http, { decorRequest } from '@/plugins/axios/http.js';
+import { http, decorRequest } from '@/plugins/axios';
 
 const userLoginApiMap = {
   login: { url: '/login', method: 'POST' },

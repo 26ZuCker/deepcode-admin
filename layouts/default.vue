@@ -4,11 +4,14 @@
     <top-bar @onShowLeftBar="showLeftBar"></top-bar>
 
     <!-- 占位右侧显示实时时间 -->
-    <!--     <v-sheet class="default-layout-topbar-time blue-grey lighten-2">
-      <v-container style="height: 48px" class="text-right">
+    <v-sheet
+      class="default-layout-topbar-time blue-grey lighten-2"
+      style="height: 48px"
+    >
+      <!-- <v-container style="height: 48px" class="text-right">
         {{ currentTime }}
-      </v-container>
-    </v-sheet> -->
+      </v-container> -->
+    </v-sheet>
 
     <v-sheet
       height="100%"
@@ -28,7 +31,6 @@
 
     <!-- 左侧边栏 -->
     <v-navigation-drawer
-      dark
       dense
       fixed
       rounded="rounded-br-xl"
@@ -52,7 +54,8 @@
     </v-navigation-drawer>
 
     <!-- 底部浮动按钮 -->
-    <float-btn></float-btn>
+    <!--     <float-btn></float-btn>
+ -->
   </v-app>
 </template>
 

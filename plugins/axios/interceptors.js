@@ -1,23 +1,29 @@
+import { getToken, setToken, removeToken } from '@/utils/localStorage';
+
 /**
- * 请求拦截器
+ * 请求拦截器，通过call能使用nuxt中的context
  * @param {any} config
  */
-const reqInterceptors = (config) => {};
+const reqInter = (config) => {
+  const token = getToken();
+};
 /**
- * 请求失败拦截器
+ * 请求失败拦截器，通过call能使用nuxt中的context
  * @param {any} error
  */
-const errReqInterceptors = (error) => {};
+const errReqInter = (error) => {
+  return Promise.reject(error);
+};
 
 /**
- * 响应成功拦截器
+ * 响应成功拦截器，通过call能使用nuxt中的context
  * @param {any} response
  */
-const resInterceptors = async (response) => {};
+const resInter = async (response) => {};
 /**
- * 响应失败拦截器
+ * 响应失败拦截器，通过call能使用nuxt中的context
  * @param {any} error
  */
-const errResInterceptors = async (error) => {};
+const errResInter = async (error) => {};
 
-export { reqInterceptors, resInterceptors, errReqInterceptors, errResInterceptors };
+export { reqInter, resInter, errReqInter, errResInter };

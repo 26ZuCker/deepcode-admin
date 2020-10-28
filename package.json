@@ -16,6 +16,7 @@
     "core-js": "^3.6.5",
     "dayjs": "^1.9.1",
     "md5": "^2.3.0",
+    "minify-css-string": "^1.0.0",
     "nuxt": "^2.14.5"
   },
   "devDependencies": {

@@ -1,3 +1,7 @@
+/**
+ * 获取本地token，不存在返回null
+ * @param {string} userId
+ */
 const getToken = (userId = 'token') => {
   if (process.client) {
     return window.localStorage.getItem(userId);

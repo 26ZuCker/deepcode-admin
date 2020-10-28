@@ -6,6 +6,7 @@ import prodConfig from './configs/prod.js';
 
 //浅拷贝即可
 const config = { ...commonConfig };
+
 if (isProd) {
   Object.assign(config, prodConfig);
 } else {

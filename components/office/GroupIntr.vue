@@ -12,13 +12,12 @@
       <div class="white--text text-center">一套完整的工作体系</div>
       <div class="white--text text-center">一套缜密的项目流程</div>
 
-      <div class="blue--text darken-3 font-weight-black text-center">
+      <div
+        @click="$router.push('/login')"
+        class="blue--text darken-3 font-weight-black text-center"
+      >
         加入我们
-        <v-icon
-          color="blue darken-2"
-          size="40"
-          style="top: -2px"
-          @click="$router.push('/login')"
+        <v-icon color="blue darken-2" size="40" style="top: -2px"
           >mdi-chevron-right</v-icon
         >
       </div>
@@ -27,23 +26,28 @@
     <!-- 组分类：前端，后端，算法，策划 -->
     <v-row justify="center" style="width=70%">
       <v-col v-for="i in groupTypes" :key="i.name" cols="5">
-        <v-card
-          max-width="300"
-          max-height="500"
-          elevation="0"
-          class="ma-3 border-grey"
-        >
-          <v-card-title :class="groupCardContainer">
-            <v-icon size="30">{{ i.icon }}</v-icon>
-            <div>
-              {{ i.name }}
-            </div>
-          </v-card-title>
+        <v-hover>
+          <template v-slot:default="{ hover }">
+            <v-card
+              max-width="300"
+              max-height="500"
+              elevation="0"
+              :dark="hover"
+              class="ma-3 border-grey"
+            >
+              <v-card-title :class="groupCardContainer">
+                <v-icon size="30">{{ i.icon }}</v-icon>
+                <div>
+                  {{ i.name }}
+                </div>
+              </v-card-title>
 
-          <v-card-text :class="groupCardText">
-            {{ i.des }}
-          </v-card-text>
-        </v-card>
+              <v-card-text :class="groupCardText">
+                {{ i.des }}
+              </v-card-text>
+            </v-card>
+          </template>
+        </v-hover>
       </v-col>
     </v-row>
   </v-sheet>
