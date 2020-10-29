@@ -1,5 +1,9 @@
 import { get_userInfo, login, logout } from '@/apis/user/information.js';
 import { getToken, setToken, removeToken } from '@/utils/localStorage';
+import { codeMap } from '@/plugins/axios';
+
+const { ERRORCODE } = codeMap;
+
 /**
  * 有关登录和登出的模块都归在login内，user只负责用户个人信息和权限的处理
  */
@@ -67,22 +71,40 @@ export const state = () => ({
   ],
 });
 export const mutations = {
-  //清除token和userInfo
+  /**
+   * 设置token
+   */
   set_token(state, token) {
     state.token = token;
     setToken(token);
   },
+  /**
+   * 清空vuex内的token
+   */
   reset_token(state) {
     state.token = null;
-    removeToken();
   },
+  /**
+   * 清空vuex内的userInfo
+   */
   set_userInfo(state, userInfo) {
     state.userInfo = userInfo;
     state.permission = userInfo.permission;
   },
+  /**
+   * 清空vuex内的userInfo
+   */
   reset_userInfo(state) {
     state.userInfo = {};
     state.permission = '';
+  },
+  /**
+   * 清空vuex内的token
+   */
+  reset_all(state) {
+    state.userInfo = {};
+    state.permission = '';
+    state.token = null;
   },
 };
 export const actions = {
@@ -90,6 +112,12 @@ export const actions = {
    * 获取并更新用户信息
    */
   async getUserInfo({ commit, state, getters }) {
+    //获取失败的回调
+    const reset = () => {
+      /* commit('reset_all');
+      removeToken(); */
+      commit('reset_token');
+    };
     try {
       //已登录
       if (getters('user/isLogin')) {
@@ -99,16 +127,18 @@ export const actions = {
       else {
         const params = { token: state.token };
         const { code, data, msg } = (await get_userInfo(params)).data;
-        if (code !== -1) {
+        if (code !== ERRORCODE) {
           const { userInfo } = data;
           commit('set_userInfo', userInfo);
           //容错处理如自定义状态码错误
           return Promise.resolve(state.userInfo);
         } else {
+          reset();
           return Promise.reject(msg);
         }
       }
     } catch (error) {
+      reset();
       return Promise.reject(error);
     }
   },
@@ -127,7 +157,7 @@ export const actions = {
     else {
       try {
         const { code, data, msg } = (await login()).data;
-        if (code !== -1) {
+        if (code !== ERRORCODE) {
           const { token } = data;
           commit('set_token', token);
           return await this.getUserInfo();
@@ -141,25 +171,30 @@ export const actions = {
   },
   /**
    * 登出
-   * 清空vuex即可
+   * 清空vuex和localStorage即可
    */
   async logout({ commit, state }) {
     try {
       const { code, msg } = (await logout()).data;
-      if (code !== -1) {
-        commit('reset_userInfo');
-        commit('reset_token');
+      if (code !== ERRORCODE) {
+        commit('reset_all');
+        removeToken();
+        return Promise.resolve('登出成功');
       } else {
         return Promise.reject(msg);
       }
-      return Promise.resolve('登出成功');
     } catch (error) {
       return Promise.reject(error);
     }
   },
 };
 export const getters = {
+  /**
+   * 注意：可能存在已进行响应login即获取token但未响应getUserInfo
+   * 所以需要在getUserInfo失败的回调中清空token
+   */
   isLogin(state) {
-    return Object.keys(state.userInfo).length !== 0;
+    return true;
+    return state.token !== '';
   },
 };

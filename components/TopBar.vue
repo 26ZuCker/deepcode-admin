@@ -93,10 +93,10 @@ export default {
     },
     current_tab_container () {
       return function (title) {
-        console.log(title)
-        console.log(this.$route.name)
+        /*    console.log(title)
+           console.log(this.$route.name) */
         const bool = title === this.$route.name
-        console.log(bool)
+        //console.log(bool)
         return {
           'mx-2': true,
           'border-bottom-black': bool

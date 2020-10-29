@@ -10,11 +10,11 @@ const auth = (allowedPermission = -2) => ({ store, redirect }) => {
   }
   //手动传入-1则表示至少需要登录
   else if (allowedPermission === -1) {
-    return store.user.getters.isLogin ? true : redirect('/login');
+    return store.getters['user/isLogin'] ? true : redirect('/login');
   }
   //传入则必定需要鉴权则先判断是否已登录
   else {
-    const current_per = store.user.state.permission;
+    const current_per = store.state.user.permission;
     return comparePermission(current_per, allowedPermission);
   }
 };

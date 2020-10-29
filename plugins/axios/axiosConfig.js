@@ -16,14 +16,12 @@ const axiosConfig = {
   // 最大响应数据大小
   maxContentLength: 2000,
 };
-
 /**
  * 自定义响应码，非默认状态码
  */
 const codeMap = {
   ERRORCODE: -1,
 };
-
 /**
  * 不同环境下的api请求前缀
  */
@@ -32,5 +30,9 @@ const BASE_URL = {
   development: '',
   test: '',
 };
+/**
+ * 跨域白名单即不需要鉴权则不需要携带token的api
+ */
+const whiteList = [];
 
-export { axiosConfig, codeMap, BASE_URL };
+export { axiosConfig, codeMap, BASE_URL, whiteList };

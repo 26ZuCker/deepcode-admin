@@ -9,7 +9,7 @@ import {
   errResInter,
 } from './interceptors.js';
 
-import { axiosConfig } from './axiosConfig.js';
+import { axiosConfig, codeMap } from './axiosConfig.js';
 
 const http = axios.create(axiosConfig);
 
@@ -29,6 +29,4 @@ export default axiosService;
 //挂载到vue实例上
 Vue.prototype.$http = http;
 
-export { decorRequest, http };
-
-export { codeMap } from './axiosConfig.js';
+export { decorRequest, http, codeMap };
